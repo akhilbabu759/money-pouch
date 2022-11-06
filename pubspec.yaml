@@ -68,6 +68,7 @@ flutter:
     - assets/images/money time.jpg
     - assets/images/mammon.jpg
     - assets/images/money.jpg
+    - assets/images/Types-of-financial-managers.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
