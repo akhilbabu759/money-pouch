@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'money pouch',
       // theme: ThemeData(primaryColor: Color.fromARGB(255, 221, 224, 229)),
-      home:  InputName(),
+      home:  Home(),
     );
   }
 }
