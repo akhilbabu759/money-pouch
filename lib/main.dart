@@ -1,5 +1,7 @@
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:moneypouch/pages/add_category.dart';
 import 'package:moneypouch/pages/add_transation.dart';
 import 'package:moneypouch/pages/home.dart';
 import 'package:moneypouch/pages/one%20time/user_input.dart';
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
       
       title: 'money pouch',
       // theme: ThemeData(primaryColor: Color.fromARGB(255, 221, 224, 229)),
-      home:  AddTransation(),
+      home:  Home(),
     );
   }
 }

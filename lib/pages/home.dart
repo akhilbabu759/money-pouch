@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:moneypouch/pages/add_category.dart';
+import 'package:moneypouch/pages/add_transation.dart';
+import 'package:moneypouch/pages/settings.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -9,12 +11,28 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  
+  List choices =  [Home(),AddCatogery(),Settings()
+ 
+];
+
+   int _selectedIndex=0;
+  void _onItemTapped(int index) {
+    Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => choices[index]));
+    setState(() {
+      _selectedIndex = index;
+    }
+
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton:
-          FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add)),
-      backgroundColor: Colors.black26,
+          FloatingActionButton(onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: ((context) => AddTransation())));}, child: const Icon(Icons.add)),
+      backgroundColor: Color.fromARGB(213, 20, 27, 38),
       body: SingleChildScrollView(
         child: SafeArea(
           child:
@@ -36,7 +54,7 @@ class _HomeState extends State<Home> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Column(children:const [
+                          Column(children: const [
                             Text(
                               'CURRENT BALANCE',
                               style: TextStyle(
@@ -50,27 +68,25 @@ class _HomeState extends State<Home> {
                               style: TextStyle(
                                   fontSize: 25, fontWeight: FontWeight.bold),
                             ),
-                           
                           ]),
                         ],
                       ),
                       const SizedBox(
                         height: 13,
                       ),
-                      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          
                           const Text('INCOME',
                               style: TextStyle(fontWeight: FontWeight.bold)),
                           Row(
-                            children:const [
+                            children: const [
                               Icon(
                                 Icons.arrow_upward,
                                 color: Colors.green,
                               ),
-                           
-                          
-                          Icon(Icons.arrow_downward, color: Colors.red) ],
+                              Icon(Icons.arrow_downward, color: Colors.red)
+                            ],
                           ),
                           const Padding(
                             padding: EdgeInsets.only(right: 14),
@@ -84,12 +100,10 @@ class _HomeState extends State<Home> {
                       const SizedBox(
                         height: 9,
                       ),
-                      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const[
-                          
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
                           Text('₹ 5000', style: TextStyle(fontSize: 25)),
-                          
-                          
                           Text(
                             '₹ 1000',
                             style: TextStyle(fontSize: 25),
@@ -138,7 +152,8 @@ class _HomeState extends State<Home> {
                             child: ListTile(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20.0)),
-                              tileColor: const Color.fromARGB(255, 241, 241, 241),
+                              tileColor:
+                                  const Color.fromARGB(255, 241, 241, 241),
                               leading: const Icon(
                                 Icons.arrow_downward,
                                 color: Colors.red,
@@ -158,11 +173,19 @@ class _HomeState extends State<Home> {
           ]),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(items: const[
-        BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),
-        BottomNavigationBarItem(label: 'Category', icon: Icon(Icons.category)),
-        BottomNavigationBarItem(label: 'Settings', icon: Icon(Icons.settings))
-      ]),
+      bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: Colors.white,
+        backgroundColor: Color.fromARGB(212, 49, 54, 62),
+        onTap: _onItemTapped,
+        currentIndex: _selectedIndex,
+          selectedItemColor: Color.fromARGB(255, 7, 255, 255),
+          items: const [
+            BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),
+            BottomNavigationBarItem(
+                label: 'Category', icon: Icon(Icons.category)),
+            BottomNavigationBarItem(
+                label: 'Settings', icon: Icon(Icons.settings))
+          ]),
     );
   }
 }

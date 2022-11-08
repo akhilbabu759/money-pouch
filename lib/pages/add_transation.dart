@@ -34,7 +34,7 @@ class _AddTransationState extends State<AddTransation> {
                   SizedBox(
                     width: 29,
                   ),
-                  Text('INCOME'),
+                  Text('INCOME',style: TextStyle(fontWeight: FontWeight.bold,),),
                   Expanded(
                     child: RadioListTile(
                         value: 'p',
@@ -45,7 +45,7 @@ class _AddTransationState extends State<AddTransation> {
                           });
                         })),
                   ),
-                  Text('EXPENSE'),
+                  Text('EXPENSE',style: TextStyle(fontWeight: FontWeight.bold),),
                   Expanded(
                     child: RadioListTile(
                         value: 'd',
@@ -126,6 +126,7 @@ class _AddTransationState extends State<AddTransation> {
           ),
         ),
       ),
+      
     );
   }
 }
