@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:moneypouch/pages/home.dart';
 
-import 'one time/welcome.dart';
+
 
 class IntroductionScreens extends StatefulWidget {
   const IntroductionScreens({Key? key}) : super(key: key);
@@ -46,7 +46,7 @@ class _IntroductionScreensState extends State<IntroductionScreens> {
           ],
           onDone: () {
              Navigator.of(context).pushReplacement(
-           MaterialPageRoute(builder: (context) =>  Home()));
+           MaterialPageRoute(builder: (context) =>  const Home()));
 
             if (kDebugMode) {
               print("Done clicked");

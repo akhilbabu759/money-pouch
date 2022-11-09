@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:moneypouch/pages/home.dart';
-import 'package:moneypouch/pages/intro.dart';
+
 import 'package:moneypouch/pages/one%20time/welcome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

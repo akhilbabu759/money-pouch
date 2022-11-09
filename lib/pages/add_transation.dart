@@ -14,10 +14,10 @@ class _AddTransationState extends State<AddTransation> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(78.0), // here the desired height
+        preferredSize: const Size.fromHeight(78.0), // here the desired height
         child: AppBar(
-            backgroundColor: Color.fromARGB(213, 20, 27, 38),
-            title: Text(
+            backgroundColor: const Color.fromARGB(213, 20, 27, 38),
+            title: const Text(
               'Add Transation',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             )),
@@ -26,15 +26,15 @@ class _AddTransationState extends State<AddTransation> {
         child: SafeArea(
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 60,
               ),
               Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 29,
                   ),
-                  Text('INCOME',style: TextStyle(fontWeight: FontWeight.bold,),),
+                  const Text('INCOME',style: TextStyle(fontWeight: FontWeight.bold,),),
                   Expanded(
                     child: RadioListTile(
                         value: 'p',
@@ -45,7 +45,7 @@ class _AddTransationState extends State<AddTransation> {
                           });
                         })),
                   ),
-                  Text('EXPENSE',style: TextStyle(fontWeight: FontWeight.bold),),
+                  const Text('EXPENSE',style: TextStyle(fontWeight: FontWeight.bold),),
                   Expanded(
                     child: RadioListTile(
                         value: 'd',
@@ -62,21 +62,21 @@ class _AddTransationState extends State<AddTransation> {
                   padding: const EdgeInsets.all(18.0),
                   child: TextField(keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                        fillColor: Color.fromARGB(255, 241, 241, 241),
+                        fillColor: const Color.fromARGB(255, 241, 241, 241),
                         filled: true,
                         border: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color: Color.fromARGB(255, 241, 241, 241),
                                 style: BorderStyle.none),
                             borderRadius: BorderRadius.circular(20.0)),
                         hintText: 'Amount',
-                        hintStyle: TextStyle(fontWeight: FontWeight.bold),
+                        hintStyle: const TextStyle(fontWeight: FontWeight.bold),
                         focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 color: Color.fromARGB(255, 241, 241, 241)),
                             borderRadius: BorderRadius.circular(20.0)),
                         enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                               color: Color.fromARGB(255, 241, 241, 241)),
                           borderRadius: BorderRadius.circular(25.7),
                         )),
@@ -89,7 +89,7 @@ class _AddTransationState extends State<AddTransation> {
                   tileColor: const Color.fromARGB(255, 241, 241, 241),
                   title: const Text('Catogory',
                       style: TextStyle(fontWeight: FontWeight.bold)),
-                  trailing: Icon(Icons.arrow_drop_down),
+                  trailing: const Icon(Icons.arrow_drop_down),
                 ),
               ),
               Padding(
@@ -102,7 +102,7 @@ class _AddTransationState extends State<AddTransation> {
                     'Date',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  trailing: Icon(Icons.date_range),
+                  trailing: const Icon(Icons.date_range),
                 ),
               ),
               Padding(
@@ -111,8 +111,8 @@ class _AddTransationState extends State<AddTransation> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0)),
                     tileColor: const Color.fromARGB(255, 241, 241, 241),
-                    title: Center(
-                        child: const Text(
+                    title: const Center(
+                        child: Text(
                       'Save',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     )),

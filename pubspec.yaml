@@ -39,6 +39,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   shared_preferences: ^2.0.15
   flutter_datetime_picker: ^1.5.1
+  restart_app: ^1.1.0+1
+  lottie: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +72,7 @@ flutter:
     - assets/images/mammon.jpg
     - assets/images/money.jpg
     - assets/images/Types-of-financial-managers.jpg
+    - assets/images/38575-make-money-online.zip
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

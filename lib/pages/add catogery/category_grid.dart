@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 class CategoryGrid extends StatelessWidget {
   const CategoryGrid({super.key});
@@ -8,16 +7,32 @@ class CategoryGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Color.fromARGB(255, 238, 236, 236),
+      color: const Color.fromARGB(255, 238, 236, 236),
       child: GridView(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisSpacing: 12,
           mainAxisSpacing: 12,
           crossAxisCount: 3,
         ),
+        shrinkWrap: true,
         children: [
           Container(
-              child: Card(
+              decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 224, 224, 224),
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color.fromARGB(255, 158, 158, 158),
+                      blurRadius: 15,
+                      offset: Offset(5, 5),
+                    ),
+                    BoxShadow(
+                      color: Colors.white,
+                      blurRadius: 15,
+                      offset: Offset(-5, -5),
+                    ),
+                  ]),
+              child: const Card(
                   color: Color.fromARGB(255, 214, 214, 214),
                   child: Center(
                       child: Text(
@@ -27,9 +42,10 @@ class CategoryGrid extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                         fontStyle: FontStyle.italic),
-                  ))),
+                  )))),
+          Container(
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 224, 224, 224),
+                  color: const Color.fromARGB(255, 224, 224, 224),
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: const [
                     BoxShadow(
@@ -42,9 +58,8 @@ class CategoryGrid extends StatelessWidget {
                       blurRadius: 15,
                       offset: Offset(-5, -5),
                     ),
-                  ])),
-          Container(
-              child: Card(
+                  ]),
+              child: const Card(
                   color: Color.fromARGB(255, 214, 214, 214),
                   child: Center(
                       child: Text(
@@ -54,9 +69,10 @@ class CategoryGrid extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                         fontStyle: FontStyle.italic),
-                  ))),
+                  )))),
+          Container(
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 224, 224, 224),
+                  color: const Color.fromARGB(255, 224, 224, 224),
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: const [
                     BoxShadow(
@@ -69,9 +85,8 @@ class CategoryGrid extends StatelessWidget {
                       blurRadius: 15,
                       offset: Offset(-5, -5),
                     ),
-                  ])),
-          Container(
-              child: Card(
+                  ]),
+              child: const Card(
                   color: Color.fromARGB(255, 214, 214, 214),
                   child: Center(
                       child: Text(
@@ -81,9 +96,10 @@ class CategoryGrid extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                         fontStyle: FontStyle.italic),
-                  ))),
+                  )))),
+          Container(
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 224, 224, 224),
+                  color: const Color.fromARGB(255, 224, 224, 224),
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: const [
                     BoxShadow(
@@ -96,9 +112,8 @@ class CategoryGrid extends StatelessWidget {
                       blurRadius: 15,
                       offset: Offset(-5, -5),
                     ),
-                  ])),
-          Container(
-              child: Card(
+                  ]),
+              child: const Card(
                   color: Color.fromARGB(255, 214, 214, 214),
                   child: Center(
                       child: Text(
@@ -108,9 +123,10 @@ class CategoryGrid extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                         fontStyle: FontStyle.italic),
-                  ))),
+                  )))),
+          Container(
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 224, 224, 224),
+                  color: const Color.fromARGB(255, 224, 224, 224),
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: const [
                     BoxShadow(
@@ -123,9 +139,8 @@ class CategoryGrid extends StatelessWidget {
                       blurRadius: 15,
                       offset: Offset(-5, -5),
                     ),
-                  ])),
-          Container(
-              child: Card(
+                  ]),
+              child: const Card(
                   color: Color.fromARGB(255, 214, 214, 214),
                   child: Center(
                       child: Text(
@@ -135,24 +150,8 @@ class CategoryGrid extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                         fontStyle: FontStyle.italic),
-                  ))),
-              decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 224, 224, 224),
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Color.fromARGB(255, 158, 158, 158),
-                      blurRadius: 15,
-                      offset: Offset(5, 5),
-                    ),
-                    BoxShadow(
-                      color: Colors.white,
-                      blurRadius: 15,
-                      offset: Offset(-5, -5),
-                    ),
-                  ])),
+                  )))),
         ],
-        shrinkWrap: true,
       ),
     );
   }
