@@ -1,6 +1,8 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:moneypouch/pages/home.dart';
+import 'package:moneypouch/pages/one%20time/user_input.dart';
 
 import 'package:moneypouch/pages/splash_screen.dart';
 
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
       
       title: 'money pouch',
       // theme: ThemeData(primaryColor: Color.fromARGB(255, 221, 224, 229)),
-      home:  const Splash(),
+      home:   Home(),
     );
   }
 }

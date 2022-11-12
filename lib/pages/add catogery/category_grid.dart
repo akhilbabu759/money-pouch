@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
 
 
-class CategoryGrid extends StatelessWidget {
+class CategoryGrid extends StatefulWidget {
   const CategoryGrid({super.key});
+
+  @override
+  State<CategoryGrid> createState() => _CategoryGridState();
+}
+
+class _CategoryGridState extends State<CategoryGrid> {
+  void delete(){
+    
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,17 +42,36 @@ class CategoryGrid extends StatelessWidget {
                       offset: Offset(-5, -5),
                     ),
                   ]),
-              child: const Card(
+              child:  Card(
                   color: Color.fromARGB(255, 214, 214, 214),
                   child: Center(
-                      child: Text(
-                    'Food',
-                    style: TextStyle(
-                        color: Color.fromARGB(221, 49, 42, 42),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        fontStyle: FontStyle.italic),
-                  )))),
+                      child: TextButton(onPressed: () {
+                        
+                      },onLongPress: () {
+                        showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    actions: [Text('yes'),SizedBox(width: 30,),
+                        Text('no')
+                    ],
+                    title:  Text('Do you want to delete'),
+                    content: Text('Food')
+                  );
+                });
+          },
+
+                        //delete function
+                      
+                        child: Text(
+                                          'Food',
+                                          style: TextStyle(
+                          color: Color.fromARGB(221, 49, 42, 42),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          fontStyle: FontStyle.italic),
+                                        ),
+                      )))),
           Container(
               decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 224, 224, 224),
@@ -59,17 +88,34 @@ class CategoryGrid extends StatelessWidget {
                       offset: Offset(-5, -5),
                     ),
                   ]),
-              child: const Card(
+              child:  Card(
                   color: Color.fromARGB(255, 214, 214, 214),
                   child: Center(
-                      child: Text(
-                    'TAX',
-                    style: TextStyle(
-                        color: Colors.black87,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        fontStyle: FontStyle.italic),
-                  )))),
+                    
+                      child: TextButton(onPressed: () {
+                        
+                      },onLongPress: () {
+                        showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    actions: [Text('yes'),SizedBox(width: 30,),
+                        Text('no')
+                    ],
+                    title:  Text('Do you want to delete'),
+                    content: Text('TAX')
+                  );
+                });
+          },
+                        child: Text(
+                                          'TAX',
+                                          style: TextStyle(
+                          color: Colors.black87,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          fontStyle: FontStyle.italic),
+                                        ),
+                      )))),
           Container(
               decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 224, 224, 224),
@@ -86,17 +132,33 @@ class CategoryGrid extends StatelessWidget {
                       offset: Offset(-5, -5),
                     ),
                   ]),
-              child: const Card(
+              child:  Card(
                   color: Color.fromARGB(255, 214, 214, 214),
                   child: Center(
-                      child: Text(
-                    'EMI',
-                    style: TextStyle(
-                        color: Colors.black87,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        fontStyle: FontStyle.italic),
-                  )))),
+                      child: TextButton(onPressed: () {
+                        
+                      },onLongPress: () {
+                        showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    actions: [Text('yes'),SizedBox(width: 30,),
+                        Text('no')
+                    ],
+                    title:  Text('Do you want to delete'),
+                    content: Text('EmI')
+                  );
+                });
+          },
+                        child: Text(
+                                          'EMI',
+                                          style: TextStyle(
+                          color: Colors.black87,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          fontStyle: FontStyle.italic),
+                                        ),
+                      )))),
           Container(
               decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 224, 224, 224),
@@ -113,17 +175,33 @@ class CategoryGrid extends StatelessWidget {
                       offset: Offset(-5, -5),
                     ),
                   ]),
-              child: const Card(
+              child:  Card(
                   color: Color.fromARGB(255, 214, 214, 214),
                   child: Center(
-                      child: Text(
-                    'Film',
-                    style: TextStyle(
-                        color: Colors.black87,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        fontStyle: FontStyle.italic),
-                  )))),
+                      child: TextButton(onPressed: () {
+                        
+                      },onLongPress: () {
+                        showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    actions: [Text('yes'),SizedBox(width: 30,),
+                        Text('no')
+                    ],
+                    title:  Text('Do you want to delete'),
+                    content: Text('Film')
+                  );
+                });
+          },
+                        child: Text(
+                                          'Film',
+                                          style: TextStyle(
+                          color: Colors.black87,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          fontStyle: FontStyle.italic),
+                                        ),
+                      )))),
           Container(
               decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 224, 224, 224),
@@ -140,17 +218,33 @@ class CategoryGrid extends StatelessWidget {
                       offset: Offset(-5, -5),
                     ),
                   ]),
-              child: const Card(
+              child: Card(
                   color: Color.fromARGB(255, 214, 214, 214),
                   child: Center(
-                      child: Text(
-                    'Rent',
-                    style: TextStyle(
-                        color: Colors.black87,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        fontStyle: FontStyle.italic),
-                  )))),
+                      child: TextButton(onPressed: () {
+                        
+                      },onLongPress: () {
+                        showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    actions: [Text('yes'),SizedBox(width: 30,),
+                        Text('no')
+                    ],
+                    title:  Text('Do you want to delete'),
+                    content: Text('RENT')
+                  );
+                });
+          },
+                        child: Text(
+                                          'Rent',
+                                          style: TextStyle(
+                          color: Colors.black87,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          fontStyle: FontStyle.italic),
+                                        ),
+                      )))),
         ],
       ),
     );

@@ -12,6 +12,16 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List choices = [const Home(), const AddCatogery(), const Settings()];
+  String greeting() {
+    var hour = DateTime.now().hour;
+    if (hour < 12) {
+      return 'Morning';
+    }
+    if (hour < 17) {
+      return 'Afternoon';
+    }
+    return 'Evening';
+  }
 
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
@@ -37,10 +47,27 @@ class _HomeState extends State<Home> {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             const SizedBox(
-              height: 70,
+              height: 30,
             ),
-            const Text('Welcom Akhil',
-                style: TextStyle(color: Colors.white, fontSize: 19)),
+            Padding(
+              padding: const EdgeInsets.only(right: 270),
+              child: Text(
+                'good ${greeting()}' ,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 17,
+                    fontStyle: FontStyle.italic),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const Text(' Akhil',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 29,
+                    fontWeight: FontWeight.bold)),
             Padding(
               padding: const EdgeInsets.all(17.0),
               child: Card(
@@ -50,25 +77,18 @@ class _HomeState extends State<Home> {
                   padding: const EdgeInsets.all(25),
                   child: Column(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Column(children: const [
-                            Text(
-                              'CURRENT BALANCE',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 25),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              '6000',
-                              style: TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.bold),
-                            ),
-                          ]),
-                        ],
+                      Text(
+                        'CURRENT BALANCE',
+                        style: TextStyle(
+                             fontSize: 25),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        '6000',
+                        style: TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(
                         height: 13,
@@ -77,21 +97,18 @@ class _HomeState extends State<Home> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text('INCOME',
-                              style: TextStyle(fontWeight: FontWeight.bold)),
-                          Row(
-                            children: const [
-                              Icon(
-                                Icons.arrow_upward,
-                                color: Colors.green,
-                              ),
-                              Icon(Icons.arrow_downward, color: Colors.red)
-                            ],
+                              style: TextStyle(fontSize:19,)),
+                          Icon(
+                            Icons.arrow_upward,
+                            color: Colors.green,
                           ),
+                          SizedBox(width: 50,),
+                          Icon(Icons.arrow_downward, color: Colors.red),
                           const Padding(
-                            padding: EdgeInsets.only(right: 14),
+                            padding: EdgeInsets.only(right: 1),
                             child: Text(
                               'EXPENSE',
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style: TextStyle(fontSize:19,),
                             ),
                           ),
                         ],
@@ -102,10 +119,10 @@ class _HomeState extends State<Home> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const [
-                          Text('₹ 5000', style: TextStyle(fontSize: 25)),
+                          Text('₹ 5000', style: TextStyle(fontSize: 25,fontWeight: FontWeight.w500)),
                           Text(
                             '₹ 1000',
-                            style: TextStyle(fontSize: 25),
+                            style: TextStyle(fontSize: 25,fontWeight: FontWeight.w500),
                           )
                         ],
                       ),
@@ -124,9 +141,12 @@ class _HomeState extends State<Home> {
               height: 440,
               child: Column(
                 children: [
-                  const Text('TRANSACTION',
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: const Text('Recent Transation',
+                        style:
+                            TextStyle(fontSize: 30, )),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -147,19 +167,22 @@ class _HomeState extends State<Home> {
                         itemBuilder: (context, index) => ClipRRect(
                           borderRadius: BorderRadius.circular(30),
                           child: Padding(
-                            padding: const EdgeInsets.all(18.0),
+                            padding: const EdgeInsets.only(left: 18,right: 18,bottom: 15),
                             child: ListTile(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20.0)),
                               tileColor:
                                   const Color.fromARGB(255, 241, 241, 241),
-                              leading: const Icon(
-                                Icons.arrow_downward,
-                                color: Colors.red,
+                              leading: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: const Icon(
+                                  Icons.arrow_downward,
+                                  color: Colors.red,
+                                ),
                               ),
-                              subtitle: const Text('November 2'),
-                              title: const Text('EMI'),
-                              trailing: const Text('₹ 400'),
+                              subtitle: const Text('2 Nov 22'),
+                              title: const Text('EMI',style: TextStyle(fontSize:18),),
+                              trailing: const Text('₹ 400',style: TextStyle(fontSize: 19),),
                             ),
                           ),
                         ),

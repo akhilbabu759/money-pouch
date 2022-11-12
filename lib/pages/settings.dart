@@ -30,9 +30,8 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(78.0), // here the desired height
-        child: AppBar(  
-            leading: Container(),
+        preferredSize: const Size.fromHeight(70.0), // here the desired height
+        child: AppBar(
             backgroundColor: const Color.fromARGB(210, 22, 27, 35),
             title: const Text(
               'Settings',
@@ -43,45 +42,69 @@ class _SettingsState extends State<Settings> {
       body: SingleChildScrollView(
         child: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.only(top: 40,left: 15),
-              child: Column(
-          children: [
-              const ListTile(
-                leading:
-                    Icon(Icons.bar_chart, size: 40),
+          padding: const EdgeInsets.only(top: 20, left: 1),
+          child: Column(
+            children: [
+               ListTile(
+                leading: IconButton(
+                    onPressed: () {}, icon: Icon(Icons.bar_chart, size: 30)),
                 title: Text('Status',
                     style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold,fontSize: 20)),
-              ),ListTile(
-                leading:
-                    IconButton(onPressed: ()async { SharedPreferences prefs = await SharedPreferences.getInstance();
-                    await prefs.clear();
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) =>const Splash(),));} ,icon:const Icon(Icons.restore, size: 40)),
-                title: const Text('Factory reset',
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20)),
+              ),
+              ListTile(
+                leading: IconButton(
+                    onPressed: () async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      await prefs.clear();
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const Splash(),
+                      ));
+                    },
+                    icon: const Icon(Icons.restore, size: 30)),
+                title: const Text('App reset',
                     style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold,fontSize: 20)),
-              ),const ListTile(
-                leading:
-                    Icon(Icons.help_outline, size: 40),
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20)),
+              ),
+               ListTile(
+                leading: IconButton(
+                    onPressed: () {}, icon:Icon(Icons.help_outline, size: 30)),
                 title: Text('Help',
                     style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold,fontSize: 20)),
-              ),const ListTile(
-                leading:
-                    Icon(Icons.info_outline, size: 40),
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20)),
+              ),
+               ListTile(
+                leading: IconButton(
+                    onPressed: () {}, icon:Icon(Icons.info_outline, size: 30),),
                 title: Text('About',
                     style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold,fontSize: 20)),
-              ),const ListTile(
-                leading:
-                    Icon(Icons.share, size: 40),
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20)),
+              ),
+               ListTile(
+                leading: IconButton(
+                    onPressed: () {}, icon:Icon(Icons.share, size: 30)),
                 title: Text('Invite',
                     style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold,fontSize: 20)),
-              ),const SizedBox(height: 250,),
-          const Text('version 1.1')],
-        ),
-            )),
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20)),
+              ),
+              const SizedBox(
+                height: 340,
+              ),
+              const Text('version 1.1')
+            ],
+          ),
+        )),
       ),
       bottomNavigationBar: BottomNavigationBar(
           unselectedItemColor: Colors.white,

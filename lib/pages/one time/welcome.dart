@@ -35,10 +35,13 @@ class Welcome extends StatelessWidget {
                         image: AssetImage(
                             'assets/images/Types-of-financial-managers.jpg')),
                   ),
-                  const Text(
-                    'Do the best you can, and don’t take life too serious',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      'Do the best you can, and don’t take life too serious',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    ),
                   ),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(40),

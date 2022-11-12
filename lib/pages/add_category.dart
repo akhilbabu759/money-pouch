@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moneypouch/pages/add%20catogery/category_grid.dart';
+import 'package:moneypouch/pages/add%20catogery/tabbar_category.dart';
 import 'package:moneypouch/pages/home.dart';
 import 'package:moneypouch/pages/settings.dart';
 
@@ -33,72 +34,37 @@ class _AddCatogeryState extends State<AddCatogery> {
                 builder: (context) {
                   return AlertDialog(
                     actions: [
-                      OutlinedButton(onPressed: () {}, child: const Text('Submit'))
+                      OutlinedButton(
+                          onPressed: () {}, child: const Text('Submit'))
                     ],
                     title: const Text('Add Category'),
                     content: TextField(
                       onChanged: (value) {},
-                      decoration: const InputDecoration(hintText: "Enter Category"),
+                      // decoration:
+                      //     const InputDecoration(hintText: "Enter Category"),
                     ),
                   );
                 });
           },
         ),
         backgroundColor: const Color.fromARGB(255, 238, 236, 236),
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(78.0), // here the desired height
-          child: AppBar(
-              leading: Container(),
-              backgroundColor: const Color.fromARGB(213, 20, 27, 38),
-              title: const Text(
-                'Add Category',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              )),
-        ),
+        appBar: AppBar(
+
+            backgroundColor: const Color.fromARGB(213, 20, 27, 38),
+            title: const Text(
+              'Add Category',
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            )),
         body: SingleChildScrollView(
           child: SafeArea(
             child: Column(
               children: [
                 const SizedBox(
-                  height: 60,
+                  height: 37,
                 ),
-                Row(
-                  children: [
-                    const SizedBox(
-                      width: 29,
-                    ),
-                    const Text(
-                      'INCOME',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
-                    Expanded(
-                      child: RadioListTile(
-                          value: 'p',
-                          groupValue: hi,
-                          onChanged: ((value) {
-                            setState(() {
-                              hi = value;
-                            });
-                          })),
-                    ),
-                    const Text('EXPENSE',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20)),
-                    Expanded(
-                      child: RadioListTile(
-                          value: 'd',
-                          groupValue: hi,
-                          onChanged: ((value) {
-                            setState(() {
-                              hi = value;
-                            });
-                          })),
-                    )
-                  ],
-                ),
+                TabbarCategory(),
                 const SizedBox(
-                  height: 40,
+                  height: 20,
                 ),
                 const Padding(
                   padding: EdgeInsets.all(18.0),
