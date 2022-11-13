@@ -14,13 +14,13 @@ class DropdownList extends StatefulWidget {
 
 class _DropdownListState extends State<DropdownList> {
   // List of items in our dropdown menu
-  String dropdownvalue = 'Item 1';
+  String dropdownvalue = 'food';
   var items = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
+    'food',
+    'emi',
+    'rent',
+    'loan',
+    'other',
   ];
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class _DropdownListState extends State<DropdownList> {
             filled: true,
             isDense: true,
             contentPadding: EdgeInsets.zero,
-            border: OutlineInputBorder(
+            border: OutlineInputBorder(borderSide: BorderSide.none,
               borderRadius: BorderRadius.circular(10),
             ),
           ) ,

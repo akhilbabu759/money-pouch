@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:moneypouch/pages/Add%20transation%20widget/drop_down.dart';
 import 'package:moneypouch/pages/Add%20transation%20widget/tabbar_transation.dart';
 
+import 'Add transation widget/date_pick.dart';
 
+Text tx=Text('Date');
 
 class AddTransation extends StatefulWidget {
   const AddTransation({super.key});
@@ -13,18 +15,19 @@ class AddTransation extends StatefulWidget {
 
 class _AddTransationState extends State<AddTransation> {
   dynamic hi = 'p';
+
   
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(70.0), // here the desired height
+        preferredSize: const Size.fromHeight(60.0), // here the desired height
         child: AppBar(
             backgroundColor: const Color.fromARGB(213, 20, 27, 38),
             title: const Text(
               'Add Transation',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             )),
       ),
       body: SingleChildScrollView(
@@ -124,11 +127,13 @@ class _AddTransationState extends State<AddTransation> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0)),
                     tileColor: const Color.fromARGB(255, 241, 241, 241),
-                    title: const Text(
-                      'Date',
-                      style: TextStyle(fontWeight: FontWeight.w300),
-                    ),
-                    trailing: const Icon(Icons.date_range),
+                    title:  tx 
+                    // Text(
+                    //   ,
+                    //   style: TextStyle(fontWeight: FontWeight.w300),
+                    // ),
+                    ,
+                    trailing: DatePick(),
                   ),
                 ),
               ),

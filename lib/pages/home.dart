@@ -3,6 +3,8 @@ import 'package:moneypouch/pages/add_category.dart';
 import 'package:moneypouch/pages/add_transation.dart';
 import 'package:moneypouch/pages/settings.dart';
 
+import 'view all transation/view_all_transation.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -151,7 +153,9 @@ class _HomeState extends State<Home> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => ViewAllTransation(),));
+                          },
                           child: const Text(
                             'view all',
                             style: TextStyle(color: Colors.blue),

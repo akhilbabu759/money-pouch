@@ -48,13 +48,16 @@ class _AddCatogeryState extends State<AddCatogery> {
           },
         ),
         backgroundColor: const Color.fromARGB(255, 238, 236, 236),
-        appBar: AppBar(
+        appBar:PreferredSize(
+        preferredSize: const Size.fromHeight(60.0), // here the desired height
+        child:
+         AppBar(
 
             backgroundColor: const Color.fromARGB(213, 20, 27, 38),
             title: const Text(
               'Add Category',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            )),
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+            ))),
         body: SingleChildScrollView(
           child: SafeArea(
             child: Column(

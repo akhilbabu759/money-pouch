@@ -30,7 +30,7 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(70.0), // here the desired height
+        preferredSize: const Size.fromHeight(60.0), // here the desired height
         child: AppBar(
             backgroundColor: const Color.fromARGB(210, 22, 27, 35),
             title: const Text(
