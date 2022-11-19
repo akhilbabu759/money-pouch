@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:moneypouch/pages/home.dart';
+import 'package:moneypouch/pages/one_time/user_input.dart';
 
-import 'package:moneypouch/pages/one%20time/welcome.dart';
+import 'package:moneypouch/pages/one_time/welcome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Splash extends StatefulWidget {
@@ -22,7 +23,7 @@ class _SplashState extends State<Splash> {
     }
    void goIntro(){
      Navigator.of(context).pushReplacement(
-           MaterialPageRoute(builder: (context) =>  const Welcome()));
+           MaterialPageRoute(builder: (context) =>  const InputName()));
 
 
    }

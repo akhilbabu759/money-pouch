@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 class ViewAllTransation extends StatefulWidget {
   const ViewAllTransation({super.key});
@@ -24,8 +23,8 @@ class _ViewAllTransationState extends State<ViewAllTransation> {
     return DefaultTabController(length: 3,child:Scaffold( appBar: AppBar(
       bottom: TabBar(
         tabs: [
-          DropdownButton(dropdownColor: Color.fromARGB(213, 20, 27, 38),
-            style: TextStyle(color: Color.fromARGB(255, 144, 237, 237),fontSize: 19),
+          DropdownButton(dropdownColor: const Color.fromARGB(213, 20, 27, 38),
+            style: const TextStyle(color: Color.fromARGB(255, 144, 237, 237),fontSize: 19),
                
               // Initial Value
               value: dropdownvalue,
@@ -48,8 +47,8 @@ class _ViewAllTransationState extends State<ViewAllTransation> {
                 });
               },
             ),
-          Text('Today',style: TextStyle(fontSize: 25),),
-          Text('Monthly',style: TextStyle(fontSize: 25),),
+          const Text('Today',style: TextStyle(fontSize: 25),),
+          const Text('Monthly',style: TextStyle(fontSize: 25),),
         ],
       ),
 
@@ -74,9 +73,9 @@ class _ViewAllTransationState extends State<ViewAllTransation> {
                                     borderRadius: BorderRadius.circular(20.0)),
                                 tileColor:
                                     const Color.fromARGB(255, 241, 241, 241),
-                                leading: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: const Icon(
+                                leading: const Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Icon(
                                     Icons.arrow_downward,
                                     color: Colors.red,
                                   ),

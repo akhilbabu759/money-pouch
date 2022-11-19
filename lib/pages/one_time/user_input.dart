@@ -1,4 +1,4 @@
-import 'dart:math';
+
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -20,7 +20,7 @@ class _InputNameState extends State<InputName> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(31, 20, 27, 38),
-      body: Container( decoration:  BoxDecoration(
+      body: Container( decoration:  const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/money time.jpg"),
             fit: BoxFit.cover,
@@ -55,7 +55,7 @@ class _InputNameState extends State<InputName> {
                                 onPressed: (() async {
                                    SharedPreferences prefs = await SharedPreferences.getInstance();
                                    await prefs.setBool('seen', true);
-                                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Home(),));
+                                   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const Home(),));
                                 }),
                                 child: const Text(
                                   'Submit',

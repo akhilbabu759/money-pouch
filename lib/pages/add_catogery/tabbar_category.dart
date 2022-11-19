@@ -1,46 +1,71 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-class TabbarTransation extends StatefulWidget {
-  const TabbarTransation({super.key});
-
+import 'package:moneypouch/db/category/category_db.dart';
+import 'package:moneypouch/pages/add_category.dart';
+ValueNotifier<int>  categoryCheck=ValueNotifier(1);
+class TabbarCategory extends StatefulWidget {
+  const TabbarCategory({super.key});
+  
   @override
-  State<TabbarTransation> createState() => _TabbarTransationState();
+  State<TabbarCategory> createState() => _TabbarCategoryState();
 }
 
-class _TabbarTransationState extends State<TabbarTransation> {
+class _TabbarCategoryState extends State<TabbarCategory> {
   late Color col;
   late Color cole;
 
   @override
   void initState() {
-    col = Color.fromARGB(255, 144, 237, 237);
-    cole = Color.fromARGB(255, 214, 214, 214);
+     
+    col = const Color.fromARGB(255, 144, 237, 237);
+    cole = const Color.fromARGB(255, 214, 214, 214);
     super.initState();
   }
 
-  void change(value) {
-    if (value == 1) {
+   void change(value) {
+    obj.isIncome=value;
+    CategoryDbFunction.instance.refreshUI();
+    if (value == true) {
+      // obj.=1;
+      obj.selectedIndex=1;
+      categoryCheck=ValueNotifier(1);
+        indexForGrid=ValueNotifier(1);
+        indexForGrid.notifyListeners();
       setState(() {
-        col = Color.fromARGB(255, 144, 237, 237);
-        cole = Color.fromARGB(255, 214, 214, 214);
+        
+        categoryCheck.notifyListeners();
+        col = const Color.fromARGB(255, 144, 237, 237);
+        cole = const Color.fromARGB(255, 214, 214, 214);
+        CategoryDbFunction.instance.refreshUI();
+        categoryCheck.notifyListeners();
       });
-    } else if (value == 2) {
+    } else  {
+      obj.selectedIndex=2;
+      categoryCheck=ValueNotifier(2);
+        indexForGrid=ValueNotifier(2);
+        indexForGrid.notifyListeners();
+        
+        
       setState(() {
-        col = Color.fromARGB(255, 214, 214, 214);
-        cole = Color.fromARGB(255, 144, 237, 237);
+        categoryCheck.notifyListeners();
+        col = const Color.fromARGB(255, 214, 214, 214);
+        cole = const Color.fromARGB(255, 144, 237, 237);
       });
     }
+   
+
+    callPageViewNotifi();
+    
   }
 
   @override
   Widget build(BuildContext context) {
     return Material(
-      // color: const Color.fromARGB(255, 238, 236, 236),
+      color: const Color.fromARGB(255, 238, 236, 236),
       child: Row(
         children: [
-          SizedBox(
+          const SizedBox(
             width: 20,
           ),
           Container(
@@ -74,14 +99,14 @@ class _TabbarTransationState extends State<TabbarTransation> {
                   borderRadius: BorderRadius.circular(30)),
               color: col,
               child: TextButton(
-                child: Text('INCOME',style: TextStyle(color: Colors.black,fontSize: 18),),
+                child: const Text('INCOME',style: TextStyle(color: Colors.black,fontSize: 18),),
                 onPressed: () {
-                  change(1);
+                  change(true);
                 },
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 50,
           ),
           Container(
@@ -115,9 +140,9 @@ class _TabbarTransationState extends State<TabbarTransation> {
                   borderRadius: BorderRadius.circular(30)),
               color: cole,
               child: TextButton(
-                child: Text('EXPENSE',style: TextStyle(color: Colors.black,fontSize: 18),),
+                child: const Text('EXPENSE',style: TextStyle(color: Colors.black,fontSize: 18),),
                 onPressed: () {
-                  change(2);
+                  change(false);
                 },
               ),
             ),

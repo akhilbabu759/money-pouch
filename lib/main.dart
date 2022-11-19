@@ -1,12 +1,25 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:moneypouch/pages/home.dart';
-import 'package:moneypouch/pages/one%20time/user_input.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:moneypouch/models/category/category_model.dart';
 
 import 'package:moneypouch/pages/splash_screen.dart';
 
-void main() {
+
+
+
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+   await Hive.initFlutter();
+   if(!Hive.isAdapterRegistered(CategoryTypeAdapter().typeId)){
+      Hive.registerAdapter(CategoryTypeAdapter()); 
+   }
+
+
+    if(!Hive.isAdapterRegistered(CategoryModelAdapter().typeId)){
+     Hive.registerAdapter(CategoryModelAdapter()); 
+   }
   runApp(const MyApp());
 }
 
@@ -23,7 +36,7 @@ class MyApp extends StatelessWidget {
       
       title: 'money pouch',
       // theme: ThemeData(primaryColor: Color.fromARGB(255, 221, 224, 229)),
-      home:   Home(),
+      home:   const Splash(),
     );
   }
 }

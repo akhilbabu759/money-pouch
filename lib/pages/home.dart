@@ -3,7 +3,7 @@ import 'package:moneypouch/pages/add_category.dart';
 import 'package:moneypouch/pages/add_transation.dart';
 import 'package:moneypouch/pages/settings.dart';
 
-import 'view all transation/view_all_transation.dart';
+import 'view_all _transation/view_all_transation.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -13,7 +13,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List choices = [const Home(), const AddCatogery(), const Settings()];
+  List choices = [const Home(),  AddCatogery(), const Settings()];
   String greeting() {
     var hour = DateTime.now().hour;
     if (hour < 12) {
@@ -52,18 +52,18 @@ class _HomeState extends State<Home> {
               height: 30,
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 270),
+              padding: const EdgeInsets.only(right: 170),
               child: Text(
                 'good ${greeting()}' ,
                 style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w400,
-                    fontSize: 17,
+                    fontSize: 16,
                     fontStyle: FontStyle.italic),
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 5,
             ),
             const Text(' Akhil',
                 style: TextStyle(
@@ -74,20 +74,20 @@ class _HomeState extends State<Home> {
               padding: const EdgeInsets.all(17.0),
               child: Card(
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(45.0)),
+                    borderRadius: BorderRadius.circular(35.0)),
                 child: Padding(
                   padding: const EdgeInsets.all(25),
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         'CURRENT BALANCE',
                         style: TextStyle(
                              fontSize: 25),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Text(
+                      const Text(
                         '6000',
                         style: TextStyle(
                             fontSize: 25, fontWeight: FontWeight.bold),
@@ -97,8 +97,8 @@ class _HomeState extends State<Home> {
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text('INCOME',
+                        children: const [
+                          Text('INCOME',
                               style: TextStyle(fontSize:19,)),
                           Icon(
                             Icons.arrow_upward,
@@ -106,7 +106,7 @@ class _HomeState extends State<Home> {
                           ),
                           SizedBox(width: 50,),
                           Icon(Icons.arrow_downward, color: Colors.red),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.only(right: 1),
                             child: Text(
                               'EXPENSE',
@@ -143,25 +143,24 @@ class _HomeState extends State<Home> {
               height: 440,
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: const Text('Recent Transation',
-                        style:
-                            TextStyle(fontSize: 30, )),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      TextButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => ViewAllTransation(),));
-                          },
-                          child: const Text(
-                            'view all',
-                            style: TextStyle(color: Colors.blue),
-                          )),
-                    ],
-                  ),
+                   Padding(
+                    padding: EdgeInsets.only( top:20,left: 10,right: 10,bottom: 20),
+                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Recent Transation',
+                            style:
+                                TextStyle(fontSize: 20, )),
+                       TextButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ViewAllTransation(),));
+                      },
+                      child: const Text(
+                        'view all',
+                        style: TextStyle(color: Colors.blue),
+                      ))],
+                    ),
+                  )
+                 ,
                   Expanded(
                     child: Card(
                       elevation: 0,
@@ -177,9 +176,9 @@ class _HomeState extends State<Home> {
                                   borderRadius: BorderRadius.circular(20.0)),
                               tileColor:
                                   const Color.fromARGB(255, 241, 241, 241),
-                              leading: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: const Icon(
+                              leading: const Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Icon(
                                   Icons.arrow_downward,
                                   color: Colors.red,
                                 ),

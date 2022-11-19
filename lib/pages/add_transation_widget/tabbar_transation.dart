@@ -1,35 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:moneypouch/db/category/category_db.dart';
 
-class TabbarCategory extends StatefulWidget {
-  const TabbarCategory({super.key});
+
+class TabbarTransation extends StatefulWidget {
+  const TabbarTransation({super.key});
 
   @override
-  State<TabbarCategory> createState() => _TabbarCategoryState();
+  State<TabbarTransation> createState() => _TabbarTransationState();
 }
 
-class _TabbarCategoryState extends State<TabbarCategory> {
+class _TabbarTransationState extends State<TabbarTransation> {
   late Color col;
   late Color cole;
 
   @override
   void initState() {
-    col = Color.fromARGB(255, 144, 237, 237);
-    cole = Color.fromARGB(255, 214, 214, 214);
+    col = const Color.fromARGB(255, 144, 237, 237);
+    cole = const Color.fromARGB(255, 214, 214, 214);
     super.initState();
   }
 
   void change(value) {
+    CategoryDbFunction.instance.refreshUI();
     if (value == 1) {
+      
       setState(() {
-        col = Color.fromARGB(255, 144, 237, 237);
-        cole = Color.fromARGB(255, 214, 214, 214);
+        col = const Color.fromARGB(255, 144, 237, 237);
+        cole = const Color.fromARGB(255, 214, 214, 214);
       });
     } else if (value == 2) {
       setState(() {
-        col = Color.fromARGB(255, 214, 214, 214);
-        cole = Color.fromARGB(255, 144, 237, 237);
+        col = const Color.fromARGB(255, 214, 214, 214);
+        cole = const Color.fromARGB(255, 144, 237, 237);
       });
     }
   }
@@ -37,10 +39,10 @@ class _TabbarCategoryState extends State<TabbarCategory> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: const Color.fromARGB(255, 238, 236, 236),
+      // color: const Color.fromARGB(255, 238, 236, 236),
       child: Row(
         children: [
-          SizedBox(
+          const SizedBox(
             width: 20,
           ),
           Container(
@@ -74,14 +76,14 @@ class _TabbarCategoryState extends State<TabbarCategory> {
                   borderRadius: BorderRadius.circular(30)),
               color: col,
               child: TextButton(
-                child: Text('INCOME',style: TextStyle(color: Colors.black,fontSize: 18),),
+                child: const Text('INCOME',style: TextStyle(color: Colors.black,fontSize: 18),),
                 onPressed: () {
                   change(1);
                 },
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 50,
           ),
           Container(
@@ -115,7 +117,7 @@ class _TabbarCategoryState extends State<TabbarCategory> {
                   borderRadius: BorderRadius.circular(30)),
               color: cole,
               child: TextButton(
-                child: Text('EXPENSE',style: TextStyle(color: Colors.black,fontSize: 18),),
+                child: const Text('EXPENSE',style: TextStyle(color: Colors.black,fontSize: 18),),
                 onPressed: () {
                   change(2);
                 },

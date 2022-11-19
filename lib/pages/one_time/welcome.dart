@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:lottie/lottie.dart';
-import 'package:moneypouch/pages/one%20time/user_input.dart';
+import 'package:moneypouch/pages/one_time/user_input.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({super.key});

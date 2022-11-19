@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'add_category.dart';
 import 'home.dart';
+import 'statistic/statistic.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -15,7 +16,7 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  List choices = [const Home(), const AddCatogery(), const Settings()];
+  List choices = [const Home(),  AddCatogery(), const Settings()];
 
   int _selectedIndex = 2;
   void _onItemTapped(int index) {
@@ -35,7 +36,7 @@ class _SettingsState extends State<Settings> {
             backgroundColor: const Color.fromARGB(210, 22, 27, 35),
             title: const Text(
               'Settings',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             )),
       ),
       // backgroundColor: Colors.black,
@@ -47,8 +48,10 @@ class _SettingsState extends State<Settings> {
             children: [
                ListTile(
                 leading: IconButton(
-                    onPressed: () {}, icon: Icon(Icons.bar_chart, size: 30)),
-                title: Text('Status',
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Statistic(),));
+                    }, icon: const Icon(Icons.bar_chart, size: 30)),
+                title: const Text('Status',
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -73,8 +76,8 @@ class _SettingsState extends State<Settings> {
               ),
                ListTile(
                 leading: IconButton(
-                    onPressed: () {}, icon:Icon(Icons.help_outline, size: 30)),
-                title: Text('Help',
+                    onPressed: () {}, icon:const Icon(Icons.help_outline, size: 30)),
+                title: const Text('Help',
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -82,8 +85,8 @@ class _SettingsState extends State<Settings> {
               ),
                ListTile(
                 leading: IconButton(
-                    onPressed: () {}, icon:Icon(Icons.info_outline, size: 30),),
-                title: Text('About',
+                    onPressed: () {}, icon:const Icon(Icons.info_outline, size: 30),),
+                title: const Text('About',
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -91,8 +94,8 @@ class _SettingsState extends State<Settings> {
               ),
                ListTile(
                 leading: IconButton(
-                    onPressed: () {}, icon:Icon(Icons.share, size: 30)),
-                title: Text('Invite',
+                    onPressed: () {}, icon:const Icon(Icons.share, size: 30)),
+                title: const Text('Invite',
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:moneypouch/pages/Add%20transation%20widget/drop_down.dart';
-import 'package:moneypouch/pages/Add%20transation%20widget/tabbar_transation.dart';
+import 'package:moneypouch/pages/add_transation_widget/drop_down.dart';
+import 'package:moneypouch/pages/add_transation_widget/tabbar_transation.dart';
 
-import 'Add transation widget/date_pick.dart';
+import 'add_transation_widget/date_pick.dart';
 
-Text tx=Text('Date');
+Text tx=const Text('Date');
 
 class AddTransation extends StatefulWidget {
   const AddTransation({super.key});
@@ -37,12 +37,12 @@ class _AddTransationState extends State<AddTransation> {
               const SizedBox(
                 height: 60,
               ),
-              TabbarTransation(),
-              SizedBox(
+              const TabbarTransation(),
+              const SizedBox(
                 height: 20,
               ),
               Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.only(left: 19,right: 19,top: 10,bottom: 10),
                   child: Container(
                     decoration: BoxDecoration(
                         color: const Color.fromARGB(255, 224, 224, 224),
@@ -84,7 +84,7 @@ class _AddTransationState extends State<AddTransation> {
                     ),
                   )),
               Padding(
-                padding: const EdgeInsets.all(18.0),
+                padding: const EdgeInsets.only(left: 19,right: 19,top: 15,bottom: 10),
                 child: Container(
                   decoration: BoxDecoration(
                       color: const Color.fromARGB(255, 224, 224, 224),
@@ -100,8 +100,8 @@ class _AddTransationState extends State<AddTransation> {
                           blurRadius: 15,
                           offset: Offset(-5, -5),
                         ),
-                      ]),child: Padding(
-                        padding: const EdgeInsets.all(18.0),
+                      ]),child: const Padding(
+                        padding: EdgeInsets.only(left: 19,right: 19,top: 15,bottom: 13 ),
                         child: DropdownList(),
                       ))
               ),
@@ -133,7 +133,7 @@ class _AddTransationState extends State<AddTransation> {
                     //   style: TextStyle(fontWeight: FontWeight.w300),
                     // ),
                     ,
-                    trailing: DatePick(),
+                    trailing: const DatePick(),
                   ),
                 ),
               ),
