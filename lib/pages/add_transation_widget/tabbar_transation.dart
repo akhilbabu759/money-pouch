@@ -3,7 +3,8 @@ import 'package:moneypouch/db/category/category_db.dart';
 
 
 class TabbarTransation extends StatefulWidget {
-  const TabbarTransation({super.key});
+   TabbarTransation({super.key});
+  
 
   @override
   State<TabbarTransation> createState() => _TabbarTransationState();
@@ -12,6 +13,7 @@ class TabbarTransation extends StatefulWidget {
 class _TabbarTransationState extends State<TabbarTransation> {
   late Color col;
   late Color cole;
+  bool transationIsIncome=true;
 
   @override
   void initState() {
@@ -21,15 +23,17 @@ class _TabbarTransationState extends State<TabbarTransation> {
   }
 
   void change(value) {
-    CategoryDbFunction.instance.refreshUI();
+    // CategoryDbFunction.instance.refreshUI();
     if (value == 1) {
       
       setState(() {
+        transationIsIncome=true;
         col = const Color.fromARGB(255, 144, 237, 237);
         cole = const Color.fromARGB(255, 214, 214, 214);
       });
     } else if (value == 2) {
       setState(() {
+        transationIsIncome=false;
         col = const Color.fromARGB(255, 214, 214, 214);
         cole = const Color.fromARGB(255, 144, 237, 237);
       });
@@ -129,3 +133,4 @@ class _TabbarTransationState extends State<TabbarTransation> {
     );
   }
 }
+_TabbarTransationState objTrAnsation=_TabbarTransationState();

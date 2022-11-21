@@ -5,6 +5,7 @@ import 'package:moneypouch/pages/splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'add_category.dart';
+import 'bottom_navigator/bottom_navigator.dart';
 import 'home.dart';
 import 'statistic/statistic.dart';
 
@@ -16,16 +17,10 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  List choices = [const Home(),  AddCatogery(), const Settings()];
+ 
 
-  int _selectedIndex = 2;
-  void _onItemTapped(int index) {
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => choices[index]));
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  
+  
 
   @override
   Widget build(BuildContext context) {
@@ -109,19 +104,7 @@ class _SettingsState extends State<Settings> {
           ),
         )),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          unselectedItemColor: Colors.white,
-          backgroundColor: const Color.fromARGB(210, 22, 27, 35),
-          onTap: _onItemTapped,
-          currentIndex: _selectedIndex,
-          selectedItemColor: const Color.fromARGB(255, 7, 255, 255),
-          items: const [
-            BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),
-            BottomNavigationBarItem(
-                label: 'Category', icon: Icon(Icons.category)),
-            BottomNavigationBarItem(
-                label: 'Settings', icon: Icon(Icons.settings))
-          ]),
+      bottomNavigationBar:BottomNavigation(selectedIndex: 2),
     );
   }
 }

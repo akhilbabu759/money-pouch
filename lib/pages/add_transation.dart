@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:moneypouch/pages/add_transation_widget/drop_down.dart';
+import 'package:moneypouch/pages/add_transation_widget/form.dart';
 import 'package:moneypouch/pages/add_transation_widget/tabbar_transation.dart';
 
 import 'add_transation_widget/date_pick.dart';
 
-Text tx=const Text('Date');
+Text tx = const Text('Date');
 
 class AddTransation extends StatefulWidget {
   const AddTransation({super.key});
@@ -14,10 +15,9 @@ class AddTransation extends StatefulWidget {
 }
 
 class _AddTransationState extends State<AddTransation> {
-  dynamic hi = 'p';
+  // var isIncome=true;
 
-  
-
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,87 +30,21 @@ class _AddTransationState extends State<AddTransation> {
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             )),
       ),
-      body: SingleChildScrollView(
-        child: SafeArea(
+      body: SafeArea(
+        child: DefaultTabController(
+          length: 2, // length of tabs
+          initialIndex: 0,
           child: Column(
             children: [
               const SizedBox(
                 height: 60,
               ),
-              const TabbarTransation(),
-              const SizedBox(
-                height: 20,
-              ),
-              Padding(
-                  padding: const EdgeInsets.only(left: 19,right: 19,top: 10,bottom: 10),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 224, 224, 224),
-                        borderRadius: BorderRadius.circular(20),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Color.fromARGB(255, 158, 158, 158),
-                            blurRadius: 15,
-                            offset: Offset(5, 5),
-                          ),
-                          BoxShadow(
-                            color: Colors.white,
-                            blurRadius: 15,
-                            offset: Offset(-5, -5),
-                          ),
-                        ]),
-                    child: TextField(
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                          fillColor: const Color.fromARGB(255, 224, 224, 224),
-                          filled: true,
-                          border: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 241, 241, 241),
-                                  style: BorderStyle.none),
-                              borderRadius: BorderRadius.circular(20.0)),
-                          hintText: 'Amount',
-                          hintStyle:
-                              const TextStyle(fontWeight: FontWeight.w300),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 241, 241, 241)),
-                              borderRadius: BorderRadius.circular(20.0)),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 241, 241, 241)),
-                            borderRadius: BorderRadius.circular(25.7),
-                          )),
-                    ),
-                  )),
-              Padding(
-                padding: const EdgeInsets.only(left: 19,right: 19,top: 15,bottom: 10),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 224, 224, 224),
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Color.fromARGB(255, 158, 158, 158),
-                          blurRadius: 15,
-                          offset: Offset(5, 5),
-                        ),
-                        BoxShadow(
-                          color: Colors.white,
-                          blurRadius: 15,
-                          offset: Offset(-5, -5),
-                        ),
-                      ]),child: const Padding(
-                        padding: EdgeInsets.only(left: 19,right: 19,top: 15,bottom: 13 ),
-                        child: DropdownList(),
-                      ))
-              ),
-              Padding(
-                padding: const EdgeInsets.all(18.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 224, 224, 224),
-                      borderRadius: BorderRadius.circular(20),
+              Container(
+                height: 65,
+                child: TabBar(
+                  indicator: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Color.fromARGB(255, 144, 237, 237),
                       boxShadow: const [
                         BoxShadow(
                           color: Color.fromARGB(255, 158, 158, 158),
@@ -123,53 +57,54 @@ class _AddTransationState extends State<AddTransation> {
                           offset: Offset(-5, -5),
                         ),
                       ]),
-                  child: ListTile(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0)),
-                    tileColor: const Color.fromARGB(255, 241, 241, 241),
-                    title:  tx 
-                    // Text(
-                    //   ,
-                    //   style: TextStyle(fontWeight: FontWeight.w300),
-                    // ),
-                    ,
-                    trailing: const DatePick(),
-                  ),
+                  onTap: (value) {
+                    // print(value);
+                    // setState(() {
+                    //   if(value==0){
+                    //     isIncome=true;
+                    //     // obj.isIncome=true;
+                    //     //  typeAdd=ValueNotifier(CategoryType.income);
+                    //   }else{
+                    //     isIncome=false;
+                    //     // obj.isIncome=false;
+                    //     //  typeAdd=ValueNotifier(CategoryType.expense);
+                    //   }
+                    // });
+                  },
+                  indicatorColor: Colors.transparent,
+                  labelColor: Colors.green,
+                  unselectedLabelColor: Colors.black,
+                  tabs: [
+                    Text(
+                      'INCOME',
+                      style: TextStyle(color: Colors.black, fontSize: 18),
+                    ),
+                    Text(
+                      'EXPENSE',
+                      style: TextStyle(color: Colors.black, fontSize: 18),
+                    ),
+                  ],
                 ),
               ),
-              Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 144, 237, 237),
-                        borderRadius: BorderRadius.circular(20),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Color.fromARGB(255, 158, 158, 158),
-                            blurRadius: 15,
-                            offset: Offset(5, 5),
-                          ),
-                          BoxShadow(
-                            color: Colors.white,
-                            blurRadius: 15,
-                            offset: Offset(-5, -5),
-                          ),
-                        ]),
-                    child: ListTile(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0)),
-                      //
-                      title: const Center(
-                          child: Text(
-                        'Save',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      )),
-                      // onTap: () =>
-                      //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      //       content: Text("SAVED"),
-                      //     ))),
-                    ),
-                  )),
+              //  Padding(
+              //    padding: const EdgeInsets.all(778.0),
+              //    child: TabBarView(children: [CategoryGrid(),Text('hh')]),
+              //  )],
+              Expanded(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(top: 18.0, left: 1, right: 1),
+                  child: TabBarView(
+                      children: [
+                        // Text('hj'),Text('jio')
+                        FormTransation(isIncome:true),
+                         FormTransation(isIncome:false)
+                         ]),
+                ),
+              ),
+              // const SizedBox(
+              //   height: 20,
+              // ),
             ],
           ),
         ),
@@ -177,4 +112,3 @@ class _AddTransationState extends State<AddTransation> {
     );
   }
 }
-

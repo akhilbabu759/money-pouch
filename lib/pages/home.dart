@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:moneypouch/pages/add_category.dart';
 import 'package:moneypouch/pages/add_transation.dart';
 import 'package:moneypouch/pages/settings.dart';
+import 'package:moneypouch/pages/bottom_navigator/bottom_navigator.dart';
 
 import 'view_all _transation/view_all_transation.dart';
 
@@ -25,14 +26,7 @@ class _HomeState extends State<Home> {
     return 'Evening';
   }
 
-  int _selectedIndex = 0;
-  void _onItemTapped(int index) {
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => choices[index]));
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -144,10 +138,10 @@ class _HomeState extends State<Home> {
               child: Column(
                 children: [
                    Padding(
-                    padding: EdgeInsets.only( top:20,left: 10,right: 10,bottom: 20),
+                    padding: const EdgeInsets.only( top:20,left: 10,right: 10,bottom: 20),
                     child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Recent Transation',
+                        const Text('Recent Transation',
                             style:
                                 TextStyle(fontSize: 20, )),
                        TextButton(
@@ -198,19 +192,8 @@ class _HomeState extends State<Home> {
           ]),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          unselectedItemColor: Colors.white,
-          backgroundColor: const Color.fromARGB(212, 49, 54, 62),
-          onTap: _onItemTapped,
-          currentIndex: _selectedIndex,
-          selectedItemColor: const Color.fromARGB(255, 7, 255, 255),
-          items: const [
-            BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),
-            BottomNavigationBarItem(
-                label: 'Category', icon: Icon(Icons.category)),
-            BottomNavigationBarItem(
-                label: 'Settings', icon: Icon(Icons.settings))
-          ]),
+     
+     bottomNavigationBar: BottomNavigation(selectedIndex: 0),
     );
   }
 }

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:moneypouch/pages/home.dart';
 import 'package:moneypouch/pages/one_time/user_input.dart';
 
-import 'package:moneypouch/pages/one_time/welcome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Splash extends StatefulWidget {
@@ -15,44 +14,34 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
-   void goHom(){
-     Navigator.of(context).pushReplacement(
-           MaterialPageRoute(builder: (context) =>  const Home()));
+  void goHom() {
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => const Home()));
+  }
 
-      
-    }
-   void goIntro(){
-     Navigator.of(context).pushReplacement(
-           MaterialPageRoute(builder: (context) =>  const InputName()));
+  void goIntro() {
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const InputName()));
+  }
 
-
-   }
-
-  
   @override
   void initState() {
     super.initState();
-    Timer(
-        const Duration(seconds: 3),
-        ()  async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool seen = (prefs.getBool('seen') ?? false);
+    Timer(const Duration(seconds: 3), () async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      bool seen = (prefs.getBool('seen') ?? false);
 
-    if (seen) {
-       goHom();
-    } else {
-      await prefs.setBool('seen', true);
-      goIntro();
-      
-     
-    }
-  
-        //  Navigator.pushReplacement(
-           }   //     context, MaterialPageRoute(builder: (context) =>  IntroductionScreens())));
-    );
-   
+      if (seen) {
+        goHom();
+      } else {
+        await prefs.setBool('seen', true);
+        goIntro();
+      }
+
+      //  Navigator.pushReplacement(
+    } //     context, MaterialPageRoute(builder: (context) =>  IntroductionScreens())));
+        );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -63,8 +52,8 @@ class _SplashState extends State<Splash> {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const[
-           CircleAvatar(
+          children: const [
+            CircleAvatar(
                 radius: 100,
                 backgroundImage: AssetImage(
                   'assets/images/mammon.jpg',
@@ -72,7 +61,7 @@ class _SplashState extends State<Splash> {
             SizedBox(
               height: 1,
             ),
-             Text(
+            Text(
               'MONEY POUCH',
               style: TextStyle(
                   fontSize: 20,
@@ -98,6 +87,3 @@ class _SplashState extends State<Splash> {
     );
   }
 }
-
-
-

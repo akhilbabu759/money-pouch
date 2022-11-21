@@ -11,6 +11,7 @@ import 'package:moneypouch/pages/home.dart';
 import 'package:moneypouch/pages/settings.dart';
 
 import 'add_catogery/new_tab.dart';
+import 'bottom_navigator/bottom_navigator.dart';
 
 final PageController controller = PageController();
 void callPageViewNotifi()
@@ -69,21 +70,18 @@ class _AddCatogeryState extends State<AddCatogery> {
     });
 
   }
- List ah=[ CategoryGrid(),const ExpenseGrid()];
+//  List ah=[ const CategoryGrid(),const ExpenseGrid()];
 
-  List choices = [const Home(),  AddCatogery(), const Settings()];
-  dynamic hi = 'p';
   
-  void _onItemTapped(int index) {
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => choices[index]));
-  }
+  // dynamic hi = 'p';
+  
+  
 
   @override
   Widget build(BuildContext context) {
     return 
     
-      ValueListenableBuilder(valueListenable: categoryCheck,builder: (BuildContext ctx, valindexForGridue, Widget?_) => 
+      // ValueListenableBuilder(valueListenable: categoryCheck,builder: (BuildContext ctx, valindexForGridue, Widget?_) => 
           Scaffold(
             floatingActionButton: FloatingActionButton(
               child: const Icon(Icons.add),
@@ -93,20 +91,20 @@ class _AddCatogeryState extends State<AddCatogery> {
                     context: context,
                     builder: (ctx) {
                       var textcontrol = TextEditingController();
-                      var val;
+                      
                       return AlertDialog(
                         actions: [
                           OutlinedButton(
                               onPressed: () async {
                                 final _catego;
            
-                                if (val.isEmpty) {
+                                if (textcontrol.text.isEmpty) {
                                   return;
                                   // return print('not');
                                 } else {
-                                  log(val);
+                                  
                                   _catego = CategoryModel(
-                                      name: val,
+                                      name: textcontrol.text,
                                       type: typeAdd.value,
                                       id: DateTime.now().millisecondsSinceEpoch);
                                 }
@@ -118,12 +116,7 @@ class _AddCatogeryState extends State<AddCatogery> {
                         title: const Text('Add Category'),
                         content: TextField(
                           controller: textcontrol,
-                          onChanged: (value) {
-                            // print(textcontrol.text);
-                            val = value;
-                          },
-                          // decoration:
-                          //     const InputDecoration(hintText: "Enter Category"),
+                          
                         ),
                       );
                     });
@@ -196,30 +189,8 @@ class _AddCatogeryState extends State<AddCatogery> {
               ))
               ]
             ),)),
-            bottomNavigationBar: BottomNavigationBar(
-                onTap: _onItemTapped,
-                unselectedItemColor: Colors.white,
-                selectedItemColor: const Color.fromARGB(255, 7, 255, 255),
-                backgroundColor: const Color.fromARGB(213, 20, 27, 38),
-                currentIndex:obj. selectedIndex,
-                items: const [
-                  BottomNavigationBarItem(
-                      label: 'Home',
-                      icon: Icon(
-                        Icons.home,
-                      )),
-                  BottomNavigationBarItem(
-                      label: 'Category',
-                      icon: Icon(
-                        Icons.category,
-                      )),
-                  BottomNavigationBarItem(
-                      label: 'Settings',
-                      icon: Icon(
-                        Icons.settings,
-                      ))
-                ]),
-           ),
+            bottomNavigationBar: BottomNavigation(selectedIndex: 1),
+           
        );
   }
 }
