@@ -15,7 +15,7 @@ class _ExpenseGridState extends State<ExpenseGrid> {
   Widget build(BuildContext context) {
     return ValueListenableBuilder(valueListenable: CategoryDbFunction().expenseListenable,builder: (BuildContext  ctx, List<CategoryModel> newlIst, Widget? _) => 
        Material(
-        color: Color.fromARGB(255, 170, 93, 93),
+        color: Color.fromARGB(255, 238, 236, 236),
         child: GridView.builder( itemCount: newlIst.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisSpacing: 12,

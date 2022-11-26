@@ -26,8 +26,8 @@ class CategoryDbFunction{
   //  bool a=value.id.isFinite;
   //  print(value.id~/1000000);
   //  print(a);
-   int id=await categoryDB.add(value);
-   value.id=id;
+   await categoryDB.put(value.id,value);
+  //  value.id=id;
    
   //  log(id.toString());
     

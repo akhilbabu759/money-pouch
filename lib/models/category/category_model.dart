@@ -11,7 +11,7 @@ enum CategoryType{
 @HiveType(typeId: 1)
 class CategoryModel{
   @HiveField(0)
-   int id;
+   String id;
   @HiveField(1)
   final String name;
   @HiveField(2)

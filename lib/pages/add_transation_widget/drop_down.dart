@@ -8,7 +8,8 @@ late var dropDownVale;
 
 
 class DropdownList extends StatefulWidget {
-  const DropdownList({super.key});
+   DropdownList({Key?key ,required this.isIncome}):super(key: key);
+  bool isIncome;
   
 
   @override
@@ -48,9 +49,9 @@ class _DropdownListState extends State<DropdownList> {
               borderRadius: BorderRadius.circular(10),
             ),
           ) ,
-          items: CategoryDbFunction().expenseListenable.value.map((e) {
+          items:(widget.isIncome==false? CategoryDbFunction(). expenseListenable.value:CategoryDbFunction().incomeListenable.value).map((e) {
             return DropdownMenuItem( 
-              value: e.id,
+              value: e.name,
               child: Text(e.name),
             );
           }).toList(),
@@ -66,6 +67,6 @@ class _DropdownListState extends State<DropdownList> {
   }
 }
 
-  _DropdownListState objDropDown=_DropdownListState();
+  // _DropdownListState objDropDown=_DropdownListState();
 
 

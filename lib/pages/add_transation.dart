@@ -20,7 +20,7 @@ class _AddTransationState extends State<AddTransation> {
  
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold( resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60.0), // here the desired height
         child: AppBar(

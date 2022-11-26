@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 
 import '../add_transation.dart';
@@ -23,7 +26,9 @@ class _DatePickState extends State<DatePick> {
     if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
-        tx=Text("${selectedDate.toLocal()}".split(' ')[0]);
+       log(picked.month.toString());
+        log( DateFormat.yMMMEd().format(DateTime.now()));
+        tx=Text( DateFormat.yMMMEd().format(picked));
       });
     }
   }
