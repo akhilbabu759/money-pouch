@@ -13,7 +13,7 @@ class TransationModel{
   @HiveField(3)
   final String category; 
   @HiveField(4)
-  final String date;
+  final DateTime date;
   TransationModel({required this.amount,required this.category,required this.isIncome,required this.date, required this.id});
 
 }

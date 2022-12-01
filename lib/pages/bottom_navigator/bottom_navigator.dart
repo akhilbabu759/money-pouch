@@ -18,17 +18,21 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<BottomNavigation> {
-  List bottomNavigChoices = [const Home(), AddCatogery(), const Settings()];
+  List bottomNavigChoices = [const Home(), AddCatogery(isFromBottomNav: true), const Settings()];
   
  @override
-  
+  // void initState() {
+  //   // TODO: implement initState
+  //  widget. selectedIndex=0;
+  //   super.initState();
+  // }
   
   void _onItemTapped(int index) {
-    print(obj.selectedIndex);
+    print(widget.selectedIndex);
     setState(() {
-      obj.selectedIndex = index;
+      widget.selectedIndex = index;
     });
-    print(obj.selectedIndex);
+    print(widget.selectedIndex);
     Navigator.pushReplacement(context,
         MaterialPageRoute(builder: (context) => bottomNavigChoices[index]));
   }
@@ -40,7 +44,7 @@ class _MyWidgetState extends State<BottomNavigation> {
           unselectedItemColor: Colors.white,
           backgroundColor: const Color.fromARGB(210, 22, 27, 35),
           onTap: _onItemTapped,
-          currentIndex: obj.selectedIndex,
+          currentIndex: widget.selectedIndex,
           selectedItemColor: const Color.fromARGB(255, 7, 255, 255),
           items: const [
             BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),

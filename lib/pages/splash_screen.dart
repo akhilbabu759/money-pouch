@@ -34,7 +34,7 @@ class _SplashState extends State<Splash> {
       if (seen) {
         goHom();
       } else {
-        await prefs.setBool('seen', true);
+        // await prefs.setBool('seen', true);
         goIntro();
       }
 

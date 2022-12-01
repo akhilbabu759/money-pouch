@@ -1,4 +1,5 @@
 import 'dart:developer';
+// import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:moneypouch/db/category/category_db.dart';
@@ -24,9 +25,11 @@ ValueNotifier<int> indexForGrid = ValueNotifier(0);
 // ValueNotifier<CategoryType> typeAdd=ValueNotifier(CategoryType.income);
 
 class AddCatogery extends StatefulWidget {
-  AddCatogery({super.key});
+  AddCatogery({Key ?key,required this.isFromBottomNav});
+  bool isFromBottomNav;
   bool isIncome = true;
   int selectedIndex = 1;
+  
 
   @override
   State<AddCatogery> createState() => _AddCatogeryState();
@@ -39,6 +42,7 @@ class _AddCatogeryState extends State<AddCatogery>
 //  late final PageControl;
   @override
   void initState() {
+    
     CategoryDbFunction.instance.refreshUI();
     // if (categoryCheck.value == 1) {
     //   // indexForGrid = ValueNotifier(0);
@@ -60,7 +64,7 @@ class _AddCatogeryState extends State<AddCatogery>
 
   void typeAddSelect() {
     setState(() {
-      if (obj.isIncome == true) {
+      if (widget.isIncome == true) {
         // _selectedIndex=_selectedIndex*0;
         // _selectedIndex=1;
         CategoryDbFunction.instance.refreshUI();
@@ -86,7 +90,8 @@ class _AddCatogeryState extends State<AddCatogery>
         // ValueListenableBuilder(valueListenable: categoryCheck,builder: (BuildContext ctx, valindexForGridue, Widget?_) =>
         Scaffold(
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
+        backgroundColor: Color.fromARGB(255, 224, 224, 224),
+        child: const Icon(Icons.add,color: Colors.black),
         onPressed: () {
           typeAddSelect();
           showDialog(
@@ -98,6 +103,7 @@ class _AddCatogeryState extends State<AddCatogery>
                   actions: [
                     OutlinedButton(
                         onPressed: () async {
+                          log(widget.isFromBottomNav.toString());
                           final _catego;
 
                           if (textcontrol.text.isEmpty) {
@@ -129,10 +135,11 @@ class _AddCatogeryState extends State<AddCatogery>
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(60.0), // here the desired height
           child: AppBar(
+            centerTitle: true,
               backgroundColor: const Color.fromARGB(213, 20, 27, 38),
               title: const Text(
                 'Add Category',
-                style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ))),
       body: SafeArea(
           child: DefaultTabController(
@@ -183,15 +190,15 @@ class _AddCatogeryState extends State<AddCatogery>
           Expanded(
               child: Padding(
             padding: const EdgeInsets.only(top: 18.0, left: 18, right: 18),
-            child: TabBarView(
+            child:  TabBarView(
                 controller: _tabController,
-                children: [CategoryGrid(), ExpenseGrid()]),
+                children:const [CategoryGrid(), ExpenseGrid()]),
           ))
         ]),
       )),
-      bottomNavigationBar: BottomNavigation(selectedIndex: 1),
+      bottomNavigationBar: widget.isFromBottomNav==true? BottomNavigation(selectedIndex: 1):null
     );
   }
 }
 
-AddCatogery obj = AddCatogery();
+// AddCatogery obj = AddCatogery();

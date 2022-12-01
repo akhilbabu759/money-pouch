@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:moneypouch/models/category/category_model.dart';
 import 'package:moneypouch/models/transation_model/transation_model.dart';
@@ -37,13 +38,32 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(theme: ThemeData(
-   primaryColor: const Color.fromARGB(66, 20, 27, 38),
-   ),
+    return MaterialApp(
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en'),
+        Locale('zh'),
+        Locale('fr'),
+        Locale('es'),
+        Locale('de'),
+        Locale('ru'),
+        Locale('ja'),
+        Locale('ar'),
+        Locale('fa'),
+        Locale("es"),
+      ],
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+     primaryColor: const Color.fromARGB(66, 20, 27, 38),
+     ),
       
       title: 'money pouch',
       // theme: ThemeData(primaryColor: Color.fromARGB(255, 221, 224, 229)),
       home:   const Splash(),
+      
     );
   }
 }

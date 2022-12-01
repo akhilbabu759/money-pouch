@@ -86,6 +86,7 @@ class TransationDbFunction {
     final categoryDb = await Hive.openBox<TransationModel>(transationDbName);
     log(id.toString());
     await categoryDb.delete(id);
+    recentTransation.notifyListeners();
     refreshUI();
   }
 }

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:moneypouch/db/category/category_db.dart';
 import 'package:moneypouch/models/category/category_model.dart';
 
-late var dropDownVale;
+ dynamic dropDownVale='';
 
 
 class DropdownList extends StatefulWidget {

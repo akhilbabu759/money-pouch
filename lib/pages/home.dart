@@ -1,13 +1,17 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:intl/intl.dart';
 import 'package:moneypouch/db/transation_db/transation_db.dart';
-import 'package:moneypouch/models/transation_model/transation_model.dart';
-import 'package:moneypouch/pages/add_category.dart';
-import 'package:moneypouch/pages/add_transation.dart';
-import 'package:moneypouch/pages/settings.dart';
-import 'package:moneypouch/pages/bottom_navigator/bottom_navigator.dart';
 
-import 'view_all _transation/view_all_transation.dart';
+import 'package:moneypouch/pages/add_transation.dart';
+
+import 'package:moneypouch/pages/bottom_navigator/bottom_navigator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+
+import 'view_all_transation/view_all_transation.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -17,13 +21,26 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String name = '';
   @override
   void initState() {
     TransationDbFunction().refreshUI();
     super.initState();
+    nameSet();
   }
 
-  List choices = [const Home(), AddCatogery(), const Settings()];
+  void nameSet() async {
+    WidgetsFlutterBinding.ensureInitialized();
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      name = prefs.getString('name').toString();
+    });
+
+    print(prefs.getString('name').toString());
+  }
+
+  // List choices = [const Home(), AddCatogery(), const Settings()];
   String greeting() {
     var hour = DateTime.now().hour;
     if (hour < 12) {
@@ -35,18 +52,31 @@ class _HomeState extends State<Home> {
     return 'evening';
   }
 
+  String parseDate(DateTime date) {
+    return DateFormat.MMMd().format(date);
+  }
+
   late SlidableController slidableController;
   // List<TransationModel> listAllTransation=TransationDbFunction().getTransation();
-
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+          backgroundColor: Color.fromARGB(255, 224, 224, 224),
           onPressed: () {
+            log(TransationDbFunction()
+                .recentTransation
+                .value
+                .length
+                .toString());
             Navigator.of(context).push(MaterialPageRoute(
                 builder: ((context) => const AddTransation())));
           },
-          child: const Icon(Icons.add)),
+          child: const Icon(
+            Icons.add,
+            color: Colors.black,
+          )),
       backgroundColor: const Color.fromARGB(213, 20, 27, 38),
       body: SingleChildScrollView(
         child: SafeArea(
@@ -56,7 +86,7 @@ class _HomeState extends State<Home> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(
-                    height: 30,
+                    height: 10,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 270),
@@ -73,12 +103,17 @@ class _HomeState extends State<Home> {
                     height: 3,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right:145.0,),
-                    child: const Text(' Akhil',
+                    padding: EdgeInsets.only(
+                      right: 145.0,
+                    ),
+                    child: Text(' ' + name,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 23,
                             fontWeight: FontWeight.w400)),
+                  ),
+                  SizedBox(
+                    height: 30,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(17.0),
@@ -89,7 +124,9 @@ class _HomeState extends State<Home> {
                         padding: const EdgeInsets.all(25),
                         child: Column(
                           children: [
-                            const Text(
+                             Text(TransationDbFunction().totalAmountNotifer.value <=
+                                      -1
+                                  ? 'LOSS':
                               'CURRENT BALANCE',
                               style: TextStyle(fontSize: 25),
                             ),
@@ -100,9 +137,9 @@ class _HomeState extends State<Home> {
                               TransationDbFunction().totalAmountNotifer.value <=
                                       -1
                                   ? TransationDbFunction()
-                                          .totalAmountNotifer
-                                          .value
-                                          .toString()
+                                      .totalAmountNotifer
+                                      .value
+                                      .toString()
                                   : '₹ ' +
                                       TransationDbFunction()
                                           .totalAmountNotifer
@@ -185,7 +222,8 @@ class _HomeState extends State<Home> {
                           topRight: Radius.circular(15)),
                       color: Color.fromARGB(255, 255, 255, 255),
                     ),
-                    height: 459,// if lose is come ,the container dispaly on before bottom navigator
+                    height:
+                        459, // if lose is come ,the container dispaly on before bottom navigator
                     child: Column(
                       children: [
                         Padding(
@@ -220,107 +258,165 @@ class _HomeState extends State<Home> {
                             builder: (BuildContext context, value, Widget? _) =>
                                 Card(
                               elevation: 0,
-                              child:TransationDbFunction().recentTransation.value.length==0?Center(child: Text("No data available"),): ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: TransationDbFunction()
-                                    .recentTransation
-                                    .value
-                                    .length,
-                                itemBuilder: (context, index) => ClipRRect(
-                                  borderRadius: BorderRadius.circular(30),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 18, right: 18, bottom: 15),
-                                    child: Slidable(
-                                      key: ValueKey(TransationDbFunction()
+                              child: TransationDbFunction()
                                           .recentTransation
-                                          .value[index]
-                                          .id),
-                                      startActionPane: ActionPane(
-                                        // key: ValueKey(TransationDbFunction()
-                                        // .recentTransation
-                                        // .value[index]
-                                        // .id),
-                                        motion: ScrollMotion(),
-                                        dismissible: null,
-                                        children: [
-                                          SlidableAction(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            onPressed: (ctx) {
-                                              try{
-                                                TransationDbFunction()
-                                                  .deleteTRAnsation(
-                                                      id: TransationDbFunction()
-                                                          .recentTransation
-                                                          .value[index]
-                                                          .id);
+                                          .value
+                                          .length <
+                                      1
+                                  ? Center(
+                                      child: Text("No data available"),
+                                    )
+                                  : ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: TransationDbFunction()
+                                          .recentTransation
+                                          .value
+                                          .length,
+                                      itemBuilder: (context, index) =>
+                                          ClipRRect(
+                                        borderRadius: BorderRadius.circular(30),
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 18, right: 18, bottom: 15),
+                                          child: Slidable(
+                                            key: ValueKey(TransationDbFunction()
+                                                .recentTransation
+                                                .value[index]
+                                                .id),
+                                            startActionPane: ActionPane(
+                                              // key: ValueKey(TransationDbFunction()
+                                              // .recentTransation
+                                              // .value[index]
+                                              // .id),
+                                              motion: ScrollMotion(),
+                                              dismissible: null,
+                                              children: [
+                                                SlidableAction(
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                  onPressed: (ctx) {
+                                                    try {
+                                                    print(index);
+                                                    print(TransationDbFunction()
+                                                        .recentTransation
+                                                        .value[index]
+                                                        .id);
+                                                   
+                                                     showDialog(
+                                                        context: context,
+                                                        builder: (contex) {
+                                                          return AlertDialog(
+                                                              actions: [
+                                                                TextButton(
+                                                                    onPressed:
+                                                                        () {
+                                                                      // log(newlIst[index].id.toString());
+                                                                      TransationDbFunction().deleteTRAnsation(
+                                                                          id: TransationDbFunction()
+                                                                              .recentTransation
+                                                                              .value[index]
+                                                                              .id);
+                                                                              if(index<0){
+                                                                                setState(() {
+                                                                                
+                                                                              });
 
+                                                                              }
+                                                                              
+                                                                      Navigator.of(
+                                                                              contex)
+                                                                          .pop();
+                                                                    },
+                                                                    child: const Text(
+                                                                        'Yes')),
+                                                                const SizedBox(
+                                                                  width: 30,
+                                                                ),
+                                                                TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.of(contex)
+                                                                            .pop(),
+                                                                    child:
+                                                                        const Text(
+                                                                            'No'))
+                                                              ],
+                                                              title: const Text(
+                                                                  'Do you want to delete'),
+                                                              // content: Text('Transation' +
+                                                              //     TransationDbFunction()
+                                                              //             .recentTransation
+                                                              //             .value[
+                                                              //         index]));
+                                                          );
+                                                        });
+                                                    
 
-                                              }catch(e){
-                                                TransationDbFunction().refreshUI();
-                                                
+                                                    }
+                                                     catch (e) {
+                                                      print(e);
+                                                      // TransationDbFunction()
+                                                      //     .refreshUI();
+                                                    }
+                                                  },
+                                                  icon: Icons.delete,
+                                                  backgroundColor: Colors.red,
+                                                  label: 'DELETE',
+                                                ),
+                                                // SlidableAction(onPressed: (ctx) {
 
-                                              }
-                                              
-                                            },
-                                            icon: Icons.delete,
-                                            backgroundColor: Colors.red,
-                                            label: 'DELETE',
-                                          ),
-                                          // SlidableAction(onPressed: (ctx) {
-
-                                          // },icon: Icons.abc_sharp,)
-                                        ],
-                                      ),
-                                      child: ListTile(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20.0)),
-                                        tileColor: const Color.fromARGB(
-                                            255, 241, 241, 241),
-                                        leading: Padding(
-                                          padding: EdgeInsets.all(8.0),
-                                          child: (TransationDbFunction()
+                                                // },icon: Icons.abc_sharp,)
+                                              ],
+                                            ),
+                                            child: ListTile(
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          20.0)),
+                                              tileColor: const Color.fromARGB(
+                                                  255, 241, 241, 241),
+                                              leading: Padding(
+                                                padding: EdgeInsets.all(8.0),
+                                                child: (TransationDbFunction()
+                                                            .recentTransation
+                                                            .value[index]
+                                                            .isIncome ==
+                                                        true
+                                                    ? Icon(
+                                                        Icons.arrow_upward,
+                                                        color: Colors.green,
+                                                      )
+                                                    : Icon(
+                                                        Icons.arrow_downward,
+                                                        color: Colors.red,
+                                                      )),
+                                              ),
+                                              subtitle: Text(parseDate(
+                                                  TransationDbFunction()
                                                       .recentTransation
                                                       .value[index]
-                                                      .isIncome ==
-                                                  true
-                                              ? Icon(
-                                                  Icons.arrow_upward,
-                                                  color: Colors.green,
-                                                )
-                                              : Icon(
-                                                  Icons.arrow_downward,
-                                                  color: Colors.red,
-                                                )),
-                                        ),
-                                        subtitle: Text(TransationDbFunction()
-                                            .recentTransation
-                                            .value[index]
-                                            .date),
-                                        title: Text(
-                                          TransationDbFunction()
-                                              .recentTransation
-                                              .value[index]
-                                              .category
-                                              .toString(),
-                                          style: TextStyle(fontSize: 18),
-                                        ),
-                                        trailing: Text(
-                                          '₹ ' +
-                                              TransationDbFunction()
-                                                  .recentTransation
-                                                  .value[index]
-                                                  .amount
-                                                  .toString(),
-                                          style: TextStyle(fontSize: 19),
+                                                      .date)),
+                                              title: Text(
+                                                TransationDbFunction()
+                                                    .recentTransation
+                                                    .value[index]
+                                                    .category
+                                                    .toString(),
+                                                style: TextStyle(fontSize: 18),
+                                              ),
+                                              trailing: Text(
+                                                '₹ ' +
+                                                    TransationDbFunction()
+                                                        .recentTransation
+                                                        .value[index]
+                                                        .amount
+                                                        .toString(),
+                                                style: TextStyle(fontSize: 19),
+                                              ),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                              ),
                             ),
                           ),
                         ),

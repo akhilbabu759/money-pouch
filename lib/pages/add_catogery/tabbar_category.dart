@@ -24,11 +24,11 @@ class _TabbarCategoryState extends State<TabbarCategory> {
   }
 
    void change(value) {
-    obj.isIncome=value;
+    // widget.isIncome=value;
     CategoryDbFunction.instance.refreshUI();
     if (value == true) {
       // obj.=1;
-      obj.selectedIndex=1;
+      // obj.selectedIndex=1;
       categoryCheck=ValueNotifier(1);
         indexForGrid=ValueNotifier(1);
         indexForGrid.notifyListeners();
@@ -41,7 +41,7 @@ class _TabbarCategoryState extends State<TabbarCategory> {
         categoryCheck.notifyListeners();
       });
     } else  {
-      obj.selectedIndex=2;
+      // obj.selectedIndex=2;
       categoryCheck=ValueNotifier(2);
         indexForGrid=ValueNotifier(2);
         indexForGrid.notifyListeners();

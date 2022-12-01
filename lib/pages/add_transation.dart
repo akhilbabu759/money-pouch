@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:moneypouch/pages/add_transation_widget/drop_down.dart';
 import 'package:moneypouch/pages/add_transation_widget/form.dart';
 import 'package:moneypouch/pages/add_transation_widget/tabbar_transation.dart';
@@ -15,12 +16,15 @@ class AddTransation extends StatefulWidget {
 }
 
 class _AddTransationState extends State<AddTransation> {
+  
   // var isIncome=true;
 
  
   @override
   Widget build(BuildContext context) {
-    return Scaffold( resizeToAvoidBottomInset: false,
+    return Scaffold(
+     
+       resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60.0), // here the desired height
         child: AppBar(
@@ -44,7 +48,7 @@ class _AddTransationState extends State<AddTransation> {
                 child: TabBar(
                   indicator: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      color: Color.fromARGB(255, 144, 237, 237),
+                      color: const Color.fromARGB(255, 144, 237, 237),
                       boxShadow: const [
                         BoxShadow(
                           color: Color.fromARGB(255, 158, 158, 158),
@@ -74,7 +78,7 @@ class _AddTransationState extends State<AddTransation> {
                   indicatorColor: Colors.transparent,
                   labelColor: Colors.green,
                   unselectedLabelColor: Colors.black,
-                  tabs: [
+                  tabs: const [
                     Text(
                       'INCOME',
                       style: TextStyle(color: Colors.black, fontSize: 18),
@@ -102,13 +106,13 @@ class _AddTransationState extends State<AddTransation> {
                          ]),
                 ),
               ),
-              // const SizedBox(
-              //   height: 20,
-              // ),
+              
             ],
           ),
         ),
       ),
     );
   }
+  
 }
+
