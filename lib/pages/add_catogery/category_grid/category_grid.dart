@@ -9,7 +9,7 @@ import '../tabbar_category.dart';
 class CategoryGrid extends StatefulWidget {
   const CategoryGrid({Key? key, this.categoryList = const []})
       : super(key: key);
-  // final Text textCategory;
+
   final List<CategoryModel> categoryList;
 
   @override
@@ -17,35 +17,18 @@ class CategoryGrid extends StatefulWidget {
 }
 
 class _CategoryGridState extends State<CategoryGrid> {
-  // ValueNotifier<dynamic> catname=ValueNotifier([]);
-
   @override
   void initState() {
     CategoryDbFunction.instance.refreshUI;
     selectListenable();
 
-    // print(CategoryDbFunction().incomeListenable.value.length);
-    // print(CategoryDbFunction().incomeListenable.value.toList());
-    // final CategoryModel a=  CategoryModel(id: 1,name: 'dd',type: CategoryType.expense);
-    // CategoryDbFunction().insertCategory(a);
-
     super.initState();
   }
 
   void selectListenable() {
-    // categoryCheck.notifyListeners();
     log(categoryCheck.value.toString());
-    if (categoryCheck.value == 1) {
-      // catname.value.add( CategoryDbFunction().incomeListenable.value);
-      // catname.value.add(catname.value.toString());
-      //  itemCount=CategoryDbFunction().incomeListenable.value.length;
-
-    }
+    if (categoryCheck.value == 1) {}
   }
-  // @override
-  // setState(() {
-
-  //   });
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +74,6 @@ class _CategoryGridState extends State<CategoryGrid> {
                                 actions: [
                                   TextButton(
                                       onPressed: () {
-                                        // log(newlIst[index].id.toString());
                                         CategoryDbFunction().deleteCategory(
                                             id: newlIst[index].id);
                                         Navigator.of(contex).pop();
@@ -109,9 +91,6 @@ class _CategoryGridState extends State<CategoryGrid> {
                                 content: Text(newlIst[index].name));
                           });
                     },
-
-                    //delete function
-
                     child: Text(
                       newlIst[index].name,
                       style: const TextStyle(

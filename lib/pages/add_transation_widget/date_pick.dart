@@ -3,10 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-
 import '../add_transation.dart';
-
-
 
 class DatePick extends StatefulWidget {
   const DatePick({super.key});
@@ -26,20 +23,22 @@ class _DatePickState extends State<DatePick> {
     if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
-       log(picked.month.toString());
-        log( DateFormat.yMMMEd().format(DateTime.now()));
-        tx=Text( DateFormat.yMMMEd().format(picked));
+        log(picked.month.toString());
+        log(DateFormat.yMMMEd().format(DateTime.now()));
+        tx = Text(DateFormat.yMMMEd().format(picked));
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Material(color: const Color.fromARGB(255, 224, 224, 224),
-      child: IconButton(onPressed: (() {
-         _selectDate(context);
-        
-      }), icon: const Icon(Icons.calendar_month)),
+    return Material(
+      color: const Color.fromARGB(255, 224, 224, 224),
+      child: IconButton(
+          onPressed: (() {
+            _selectDate(context);
+          }),
+          icon: const Icon(Icons.calendar_month)),
     );
   }
 }

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:moneypouch/db/category/category_db.dart';
-
 
 class TabbarTransation extends StatefulWidget {
-   TabbarTransation({super.key});
-  
+  TabbarTransation({super.key});
 
   @override
   State<TabbarTransation> createState() => _TabbarTransationState();
@@ -13,7 +10,7 @@ class TabbarTransation extends StatefulWidget {
 class _TabbarTransationState extends State<TabbarTransation> {
   late Color col;
   late Color cole;
-  bool transationIsIncome=true;
+  bool transationIsIncome = true;
 
   @override
   void initState() {
@@ -23,17 +20,15 @@ class _TabbarTransationState extends State<TabbarTransation> {
   }
 
   void change(value) {
-    // CategoryDbFunction.instance.refreshUI();
     if (value == 1) {
-      
       setState(() {
-        transationIsIncome=true;
+        transationIsIncome = true;
         col = const Color.fromARGB(255, 144, 237, 237);
         cole = const Color.fromARGB(255, 214, 214, 214);
       });
     } else if (value == 2) {
       setState(() {
-        transationIsIncome=false;
+        transationIsIncome = false;
         col = const Color.fromARGB(255, 214, 214, 214);
         cole = const Color.fromARGB(255, 144, 237, 237);
       });
@@ -43,7 +38,6 @@ class _TabbarTransationState extends State<TabbarTransation> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      // color: const Color.fromARGB(255, 238, 236, 236),
       child: Row(
         children: [
           const SizedBox(
@@ -53,34 +47,32 @@ class _TabbarTransationState extends State<TabbarTransation> {
             width: 150,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              color: col,
-               boxShadow: const [
-                    BoxShadow(
-                      color: Color.fromARGB(255, 158, 158, 158),
-                      blurRadius: 15,
-                      offset: Offset(5, 5),
-                    ),
-                    BoxShadow(
-                      color: Colors.white,
-                      blurRadius: 15,
-                      offset: Offset(-5, -5),
-                    ),
-                  ]
-            ),
+                borderRadius: BorderRadius.circular(30),
+                color: col,
+                boxShadow: const [
+                  BoxShadow(
+                    color: Color.fromARGB(255, 158, 158, 158),
+                    blurRadius: 15,
+                    offset: Offset(5, 5),
+                  ),
+                  BoxShadow(
+                    color: Colors.white,
+                    blurRadius: 15,
+                    offset: Offset(-5, -5),
+                  ),
+                ]),
             child: Card(
               clipBehavior: Clip.antiAliasWithSaveLayer,
               semanticContainer: true,
               elevation: 0,
-              // margin: EdgeInsets.only(
-              //   top: 50,
-              //   right: 30,
-              // ),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30)),
               color: col,
               child: TextButton(
-                child: const Text('INCOME',style: TextStyle(color: Colors.black,fontSize: 18),),
+                child: const Text(
+                  'INCOME',
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
                 onPressed: () {
                   change(1);
                 },
@@ -94,34 +86,32 @@ class _TabbarTransationState extends State<TabbarTransation> {
             width: 150,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              color: cole,
-               boxShadow: const [
-                    BoxShadow(
-                      color: Color.fromARGB(255, 158, 158, 158),
-                      blurRadius: 15,
-                      offset: Offset(5, 5),
-                    ),
-                    BoxShadow(
-                      color: Colors.white,
-                      blurRadius: 15,
-                      offset: Offset(-5, -5),
-                    ),
-                  ]
-            ),
+                borderRadius: BorderRadius.circular(30),
+                color: cole,
+                boxShadow: const [
+                  BoxShadow(
+                    color: Color.fromARGB(255, 158, 158, 158),
+                    blurRadius: 15,
+                    offset: Offset(5, 5),
+                  ),
+                  BoxShadow(
+                    color: Colors.white,
+                    blurRadius: 15,
+                    offset: Offset(-5, -5),
+                  ),
+                ]),
             child: Card(
               clipBehavior: Clip.antiAliasWithSaveLayer,
               semanticContainer: true,
               elevation: 0,
-              // margin: EdgeInsets.only(
-              //   top: 50,
-              //   right: 30,
-              // ),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30)),
               color: cole,
               child: TextButton(
-                child: const Text('EXPENSE',style: TextStyle(color: Colors.black,fontSize: 18),),
+                child: const Text(
+                  'EXPENSE',
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
                 onPressed: () {
                   change(2);
                 },
@@ -133,4 +123,4 @@ class _TabbarTransationState extends State<TabbarTransation> {
     );
   }
 }
-_TabbarTransationState objTrAnsation=_TabbarTransationState();
+// _TabbarTransationState objTrAnsation=_TabbarTransationState();

@@ -1,7 +1,5 @@
-
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:moneypouch/db/transation_db/transation_db.dart';
 
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -40,14 +38,12 @@ class _GraphsState extends State<Graphs> with TickerProviderStateMixin {
     filterFunction();
     chartdivertFunctionExpense();
     chartdivertFunctionIncome();
-    //  filterFunction();
-    //  expenseNotifier.notifyListeners();
+
     super.initState();
   }
 
   String categoryId2 = 'All';
   int touchIndex = 1;
-  
 
   @override
   Widget build(BuildContext context) {
@@ -55,17 +51,15 @@ class _GraphsState extends State<Graphs> with TickerProviderStateMixin {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        // automaticallyImplyLeading: false,
-        backgroundColor:const Color.fromARGB(213, 20, 27, 38),
+        backgroundColor: const Color.fromARGB(213, 20, 27, 38),
         title: const Text(
           'Transaction Statistics',
-          // style: TextStyle(color: Colors.black),
         ),
         centerTitle: true,
       ),
-      body: 
-      ValueListenableBuilder(valueListenable: expenseLastMonthNotifier,builder: (context, value, Widget?_) => 
-         Column(
+      body: ValueListenableBuilder(
+        valueListenable: expenseLastMonthNotifier,
+        builder: (context, value, Widget? _) => Column(
           children: [
             SizedBox(
               height: height * 0.039,
@@ -82,20 +76,20 @@ class _GraphsState extends State<Graphs> with TickerProviderStateMixin {
                   height: height * 0.0657,
                   width: width * 0.83,
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 224, 224, 224),
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Color.fromARGB(255, 158, 158, 158),
-                        blurRadius: 15,
-                        offset: Offset(5, 5),
-                      ),
-                      BoxShadow(
-                        color: Colors.white,
-                        blurRadius: 15,
-                        offset: Offset(-5, -5),
-                      ),
-                    ]),
+                      color: const Color.fromARGB(255, 224, 224, 224),
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Color.fromARGB(255, 158, 158, 158),
+                          blurRadius: 15,
+                          offset: Offset(5, 5),
+                        ),
+                        BoxShadow(
+                          color: Colors.white,
+                          blurRadius: 15,
+                          offset: Offset(-5, -5),
+                        ),
+                      ]),
                   child: Padding(
                     padding: const EdgeInsets.only(
                       left: 10,
@@ -134,24 +128,24 @@ class _GraphsState extends State<Graphs> with TickerProviderStateMixin {
                 ),
               ),
             ),
-            TabBar( 
+            TabBar(
               indicator: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: const Color.fromARGB(255, 144, 237, 237),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Color.fromARGB(255, 158, 158, 158),
-                          blurRadius: 15,
-                          offset: Offset(5, 5),
-                        ),
-                        BoxShadow(
-                          color: Colors.white,
-                          blurRadius: 15,
-                          offset: Offset(-5, -5),
-                        ),
-                      ]),
+                  borderRadius: BorderRadius.circular(30),
+                  color: const Color.fromARGB(255, 144, 237, 237),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color.fromARGB(255, 158, 158, 158),
+                      blurRadius: 15,
+                      offset: Offset(5, 5),
+                    ),
+                    BoxShadow(
+                      color: Colors.white,
+                      blurRadius: 15,
+                      offset: Offset(-5, -5),
+                    ),
+                  ]),
               controller: tabController,
-              labelColor:  Colors.green,
+              labelColor: Colors.green,
               unselectedLabelColor: Colors.black,
               tabs: const [
                 Tab(
@@ -205,7 +199,8 @@ class _GraphsState extends State<Graphs> with TickerProviderStateMixin {
                                 dataSource: chartdivertFunctionOverview(),
                                 xValueMapper: (ChartDatas data, _) =>
                                     data.category,
-                                yValueMapper: (ChartDatas data, _) => data.amount,
+                                yValueMapper: (ChartDatas data, _) =>
+                                    data.amount,
                                 explode: true,
                               )
                             ],
@@ -242,7 +237,8 @@ class _GraphsState extends State<Graphs> with TickerProviderStateMixin {
                                 dataSource: chartdivertFunctionIncome(),
                                 xValueMapper: (ChartDatas data, _) =>
                                     data.category,
-                                yValueMapper: (ChartDatas data, _) => data.amount,
+                                yValueMapper: (ChartDatas data, _) =>
+                                    data.amount,
                                 explode: true,
                               )
                             ],
@@ -279,7 +275,8 @@ class _GraphsState extends State<Graphs> with TickerProviderStateMixin {
                                 dataSource: chartdivertFunctionExpense(),
                                 xValueMapper: (ChartDatas data, _) =>
                                     data.category,
-                                yValueMapper: (ChartDatas data, _) => data.amount,
+                                yValueMapper: (ChartDatas data, _) =>
+                                    data.amount,
                                 explode: true,
                               )
                             ],

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:lottie/lottie.dart';
 import 'package:moneypouch/db/chart_function/graph_function.dart';
 import 'package:moneypouch/models/graph/chart.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class GraphTab extends StatefulWidget {
-  GraphTab({Key? key,required this.categoryId2});
+  GraphTab({Key? key,required this.categoryId2}):super(key: key);
   String  categoryId2;
 
   @override

@@ -18,7 +18,7 @@ class _InputNameState extends State<InputName> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: false,
         backgroundColor: const Color.fromARGB(31, 20, 27, 38),
         body: Container(
           decoration: const BoxDecoration(
@@ -28,7 +28,7 @@ class _InputNameState extends State<InputName> {
             ),
           ),
           child: BackdropFilter(
-            filter: new ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
+            filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
             // width: 400.0,
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -65,22 +65,18 @@ class _InputNameState extends State<InputName> {
                               child: ElevatedButton(
                                   onPressed: (() async {
                                     if (tectcontrol.text == '') {
-                                      final snackBar = SnackBar(
-                                        content:
-                                            const Text('please eneter data',),
-                                        backgroundColor: (Color.fromARGB(31, 255, 255, 255)),
-                                        // action: SnackBarAction(
-                                        //   label: 'dismiss',
-                                        //   onPressed: () {},
-                                        // ),
+                                      const snackBar = SnackBar(
+                                        content: Text(
+                                          'please eneter data',
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                        backgroundColor: (Colors.yellow),
                                       );
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(snackBar);
-                                      
                                     } else {
                                       SharedPreferences prefs =
                                           await SharedPreferences.getInstance();
-                                      //  SharedPreferences sharedName = await SharedPreferences.getInstance();
 
                                       await prefs.setString(
                                           'name', tectcontrol.text);
@@ -91,8 +87,6 @@ class _InputNameState extends State<InputName> {
                                         builder: (context) => const Home(),
                                       ));
                                     }
-
-                                    // print(tectcontrol.text);
                                   }),
                                   child: const Text(
                                     'Submit',

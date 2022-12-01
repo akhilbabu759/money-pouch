@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:moneypouch/pages/add_transation_widget/drop_down.dart';
-import 'package:moneypouch/pages/add_transation_widget/form.dart';
-import 'package:moneypouch/pages/add_transation_widget/tabbar_transation.dart';
 
-import 'add_transation_widget/date_pick.dart';
+import 'package:moneypouch/pages/add_transation_widget/form.dart';
 
 Text tx = const Text('Date');
 
@@ -16,17 +12,12 @@ class AddTransation extends StatefulWidget {
 }
 
 class _AddTransationState extends State<AddTransation> {
-  
-  // var isIncome=true;
-
- 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
-       resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(60.0), // here the desired height
+        preferredSize: const Size.fromHeight(60.0),
         child: AppBar(
             backgroundColor: const Color.fromARGB(213, 20, 27, 38),
             title: const Text(
@@ -36,14 +27,14 @@ class _AddTransationState extends State<AddTransation> {
       ),
       body: SafeArea(
         child: DefaultTabController(
-          length: 2, // length of tabs
+          length: 2,
           initialIndex: 0,
           child: Column(
             children: [
               const SizedBox(
                 height: 60,
               ),
-              Container(
+              SizedBox(
                 height: 65,
                 child: TabBar(
                   indicator: BoxDecoration(
@@ -61,20 +52,7 @@ class _AddTransationState extends State<AddTransation> {
                           offset: Offset(-5, -5),
                         ),
                       ]),
-                  onTap: (value) {
-                    // print(value);
-                    // setState(() {
-                    //   if(value==0){
-                    //     isIncome=true;
-                    //     // obj.isIncome=true;
-                    //     //  typeAdd=ValueNotifier(CategoryType.income);
-                    //   }else{
-                    //     isIncome=false;
-                    //     // obj.isIncome=false;
-                    //     //  typeAdd=ValueNotifier(CategoryType.expense);
-                    //   }
-                    // });
-                  },
+                  onTap: (value) {},
                   indicatorColor: Colors.transparent,
                   labelColor: Colors.green,
                   unselectedLabelColor: Colors.black,
@@ -90,29 +68,19 @@ class _AddTransationState extends State<AddTransation> {
                   ],
                 ),
               ),
-              //  Padding(
-              //    padding: const EdgeInsets.all(778.0),
-              //    child: TabBarView(children: [CategoryGrid(),Text('hh')]),
-              //  )],
               Expanded(
                 child: Padding(
-                  padding:
-                      const EdgeInsets.only(top: 18.0, left: 1, right: 1),
-                  child: TabBarView(
-                      children: [
-                        // Text('hj'),Text('jio')
-                        FormTransation(isIncome:true),
-                         FormTransation(isIncome:false)
-                         ]),
+                  padding: const EdgeInsets.only(top: 18.0, left: 1, right: 1),
+                  child: TabBarView(children: [
+                    FormTransation(isIncome: true),
+                    FormTransation(isIncome: false)
+                  ]),
                 ),
               ),
-              
             ],
           ),
         ),
       ),
     );
   }
-  
 }
-

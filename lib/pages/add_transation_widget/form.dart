@@ -2,16 +2,14 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:intl/intl.dart';
 import 'package:moneypouch/db/transation_db/transation_db.dart';
-import 'package:moneypouch/models/category/category_model.dart';
+
 import 'package:moneypouch/models/transation_model/transation_model.dart';
 import 'package:moneypouch/pages/add_category.dart';
 import 'package:moneypouch/pages/home.dart';
 
-import 'date_pick.dart';
 import 'drop_down.dart';
 
 String? tx;
@@ -38,7 +36,7 @@ class _FormTransationState extends State<FormTransation> {
         builder: (context, child) {
           return Theme(
             data: Theme.of(context).copyWith(
-              colorScheme: ColorScheme.light(
+              colorScheme: const ColorScheme.light(
                 primary:
                     Color.fromARGB(213, 20, 27, 38), // header background color
                 onPrimary: Colors.white, // header text color
@@ -61,7 +59,6 @@ class _FormTransationState extends State<FormTransation> {
       setState(() {
         selectedDate = picked;
         tx = parseDate(picked);
-        // tx = ("${selectedDate.toLocal()}".split(' ')[0]);
       });
     }
   }
@@ -100,7 +97,6 @@ class _FormTransationState extends State<FormTransation> {
                     LengthLimitingTextInputFormatter(10),
                   ],
                   controller: amontController,
-                  //  222maxLength: 7,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                       fillColor: const Color.fromARGB(255, 224, 224, 224),
@@ -110,7 +106,6 @@ class _FormTransationState extends State<FormTransation> {
                               color: Color.fromARGB(255, 241, 241, 241),
                               style: BorderStyle.none),
                           borderRadius: BorderRadius.circular(20.0)),
-                      // hintText: 'Amount',
                       label: Text('Amount'),
                       hintStyle: const TextStyle(fontWeight: FontWeight.w300),
                       focusedBorder: OutlineInputBorder(
@@ -161,7 +156,7 @@ class _FormTransationState extends State<FormTransation> {
                                     AddCatogery(isFromBottomNav: false),
                               ));
                             },
-                            icon: Icon(Icons.add))
+                            icon: const Icon(Icons.add))
                       ],
                     ),
                   ))),
@@ -188,19 +183,14 @@ class _FormTransationState extends State<FormTransation> {
                       borderRadius: BorderRadius.circular(20.0)),
                   tileColor: const Color.fromARGB(255, 241, 241, 241),
                   title: tx == null
-                      ? Text(
+                      ? const Text(
                           'Date',
                           style: TextStyle(fontWeight: FontWeight.w300),
                         )
                       : Text(tx.toString(),
-                          style: TextStyle(fontWeight: FontWeight.w300))
-                  // Text(
-                  //   ,
-                  //   style: TextStyle(fontWeight: FontWeight.w300),
-                  // ),
-                  ,
+                          style: const TextStyle(fontWeight: FontWeight.w300)),
                   trailing: IconButton(
-                    icon: Icon(Icons.date_range),
+                    icon: const Icon(Icons.date_range),
                     onPressed: (() {
                       _selectDate(context);
                     }),
@@ -241,8 +231,13 @@ class _FormTransationState extends State<FormTransation> {
                         if (amontController.text == '' ||
                             dropDownVale == '' ||
                             tx == null) {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(backgroundColor: Colors.yellow,
-                            content: Text("Please enter Data"),
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            backgroundColor: Colors.yellow,
+                            content: Text(
+                              "Please enter Data",
+                              style: TextStyle(color: Colors.black),
+                            ),
                           ));
                         } else {
                           final transation = TransationModel(
@@ -261,11 +256,13 @@ class _FormTransationState extends State<FormTransation> {
                           log(widget.isIncome.toString());
 
                           // print(tx);
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(backgroundColor: Colors.green,
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            backgroundColor: Colors.green,
                             content: Text("SAVED"),
                           ));
                           Navigator.of(context).pop(MaterialPageRoute(
-                            builder: (context) => Home(),
+                            builder: (context) => const Home(),
                           ));
                         }
                       }))),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:moneypouch/db/transation_db/transation_db.dart';
-import 'package:moneypouch/models/category/category_model.dart';
+
 import 'package:moneypouch/models/transation_model/transation_model.dart';
 
 ValueNotifier<List<TransationModel>> overviewNotifier = ValueNotifier([]);

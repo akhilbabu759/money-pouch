@@ -34,13 +34,9 @@ class _SplashState extends State<Splash> {
       if (seen) {
         goHom();
       } else {
-        // await prefs.setBool('seen', true);
         goIntro();
       }
-
-      //  Navigator.pushReplacement(
-    } //     context, MaterialPageRoute(builder: (context) =>  IntroductionScreens())));
-        );
+    });
   }
 
   @override
