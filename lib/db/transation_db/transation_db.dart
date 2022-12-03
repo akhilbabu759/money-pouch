@@ -18,7 +18,7 @@ class TransationDbFunction {
      await transationDb.put(value.id,value);
     // value.id = id;
 
-    log(value.id.toString());
+    
     refreshUI();
   }
 
@@ -46,10 +46,8 @@ class TransationDbFunction {
     var totalIncomeVarible = 0;
     var totalExpenseVarible = 0;
     await Future.forEach(allTRansation, (TransationModel transation) {
-      log(allTRansation.toString());
-      // log(transation.type .toString());
-      // transationAll.value.add(transation);
-
+    
+      
       if (transation.isIncome == true) {
         incomeListenable.value.add(transation);
         totalAmountVarible = totalAmountVarible + transation.amount;
@@ -77,14 +75,13 @@ class TransationDbFunction {
 
       recentTransation.notifyListeners();
       transationAll.notifyListeners();
-      //  print(totalAmount);
-      // log(totalAmount.toString());
+      
     });
   }
 
   Future deleteTRAnsation({required id}) async {
     final categoryDb = await Hive.openBox<TransationModel>(transationDbName);
-    log(id.toString());
+    
     await categoryDb.delete(id);
     recentTransation.notifyListeners();
     refreshUI();

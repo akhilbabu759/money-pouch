@@ -26,7 +26,7 @@ class _CategoryGridState extends State<CategoryGrid> {
   }
 
   void selectListenable() {
-    log(categoryCheck.value.toString());
+    
     if (categoryCheck.value == 1) {}
   }
 
@@ -91,13 +91,16 @@ class _CategoryGridState extends State<CategoryGrid> {
                                 content: Text(newlIst[index].name));
                           });
                     },
-                    child: Text(
-                      newlIst[index].name,
-                      style: const TextStyle(
-                          color: Color.fromARGB(221, 49, 42, 42),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          fontStyle: FontStyle.italic),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left:8.0),
+                      child: Text(
+                        newlIst[index].name,
+                        style: const TextStyle(
+                            color: Color.fromARGB(221, 49, 42, 42),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            fontStyle: FontStyle.italic),
+                      ),
                     ),
                   )))),
         ),

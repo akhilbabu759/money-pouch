@@ -15,8 +15,8 @@ import 'drop_down.dart';
 String? tx;
 
 class FormTransation extends StatefulWidget {
-  FormTransation({Key? key, required this.isIncome}) : super(key: key);
-  bool isIncome;
+  const FormTransation({Key? key, required this.isIncome}) : super(key: key);
+ final bool isIncome;
 
   @override
   State<FormTransation> createState() => _FormTransationState();
@@ -42,11 +42,7 @@ class _FormTransationState extends State<FormTransation> {
                 onPrimary: Colors.white, // header text color
                 onSurface: Color.fromARGB(213, 20, 27, 38), // body text color
               ),
-              textButtonTheme: TextButtonThemeData(
-                style: TextButton.styleFrom(
-                  primary: Colors.red, // button text color
-                ),
-              ),
+              
             ),
             child: child!,
           );
@@ -106,7 +102,7 @@ class _FormTransationState extends State<FormTransation> {
                               color: Color.fromARGB(255, 241, 241, 241),
                               style: BorderStyle.none),
                           borderRadius: BorderRadius.circular(20.0)),
-                      label: Text('Amount'),
+                      label: const Text('Amount'),
                       hintStyle: const TextStyle(fontWeight: FontWeight.w300),
                       focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
@@ -153,7 +149,7 @@ class _FormTransationState extends State<FormTransation> {
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) =>
-                                    AddCatogery(isFromBottomNav: false),
+                                    const AddCatogery(isFromBottomNav: false),
                               ));
                             },
                             icon: const Icon(Icons.add))
@@ -226,7 +222,7 @@ class _FormTransationState extends State<FormTransation> {
                             fontWeight: FontWeight.bold, color: Colors.black),
                       )),
                       onTap: () {
-                        log(selectedDate.toString());
+                       
 
                         if (amontController.text == '' ||
                             dropDownVale == '' ||
@@ -249,11 +245,7 @@ class _FormTransationState extends State<FormTransation> {
                                   .millisecondsSinceEpoch
                                   .toString());
                           TransationDbFunction().insertTransation(transation);
-                          // print('jk');
-                          log(amontController.text);
-                          log(categoryController.text);
-                          log(dropDownVale.toString());
-                          log(widget.isIncome.toString());
+                          
 
                           // print(tx);
                           ScaffoldMessenger.of(context)

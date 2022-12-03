@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TabbarTransation extends StatefulWidget {
-  TabbarTransation({super.key});
+  const TabbarTransation({super.key});
 
   @override
   State<TabbarTransation> createState() => _TabbarTransationState();

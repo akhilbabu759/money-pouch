@@ -45,23 +45,29 @@ class _SettingsState extends State<Settings> {
           padding: const EdgeInsets.only(top: 20, left: 1),
           child: Column(
             children: [
-              ListTile(
-                leading: IconButton(
-                    onPressed: () {
+              ListTile(minLeadingWidth: 1,
+                leading: const Icon(Icons.bar_chart, size: 30),
+                title: Row(
+                  children: [
+                    TextButton(onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const Graphs(),
                       ));
                     },
-                    icon: const Icon(Icons.bar_chart, size: 30)),
-                title: const Text('Status',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20)),
+                      child: const Text('Status',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20)),
+                    ),
+                  ],
+                ),
               ),
-              ListTile(
-                leading: IconButton(
-                    onPressed: () async {
+              ListTile(minLeadingWidth: 1,
+                leading:  const Icon(Icons.restore, size: 30),
+                title: Row(
+                  children: [
+                    TextButton(onPressed: () async {
                       SharedPreferences prefs =
                           await SharedPreferences.getInstance();
                       await prefs.clear();
@@ -79,43 +85,65 @@ class _SettingsState extends State<Settings> {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => const Splash(),
                       ));
+                      
                     },
-                    icon: const Icon(Icons.restore, size: 30)),
-                title: const Text('App reset',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20)),
-              ),
-              ListTile(
-                leading: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.help_outline, size: 30)),
-                title: const Text('Help',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20)),
-              ),
-              ListTile(
-                leading: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.info_outline, size: 30),
+                      child: const Text('App reset',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20)),
+                    ),
+                  ],
                 ),
-                title: const Text('About',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20)),
               ),
-              ListTile(
-                leading: IconButton(
-                    onPressed: () {}, icon: const Icon(Icons.share, size: 30)),
-                title: const Text('Invite',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20)),
+              ListTile(minLeadingWidth: 1,
+                leading: const Icon(Icons.help_outline, size: 30),
+                title: Row(
+                  children: [
+                    TextButton(onPressed: () {
+                      
+                    },
+                      child: const Text('Help',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20)),
+                    ),
+                  ],
+                ),
+              ),
+              ListTile(minLeadingWidth: 1,
+                leading:  const Icon(Icons.info_outline, size: 30),
+                
+                title: Row(
+                  children: [
+                    TextButton(onPressed: () {
+                      
+                    },
+                      child: const Text('About',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20)),
+                    ),
+                  ],
+                ),
+              ),
+              ListTile(minLeadingWidth: 1,
+                leading:   const Icon(Icons.share, size: 30,),
+                title: Row(
+                  children: [
+                    TextButton(onPressed: () {
+                      
+                    },
+                      child: const Text('Invite',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20)),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(
                 height: 340,

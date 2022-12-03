@@ -91,38 +91,33 @@ class _GraphsState extends State<Graphs> with TickerProviderStateMixin {
                         ),
                       ]),
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 10,
+                    padding: const EdgeInsets.only(right: 10,
+                      left: 12,
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        DropdownButton<String>(
-                          underline: const Divider(
-                            color: Colors.transparent,
-                          ),
-                          value: categoryId2,
-                          items: <String>[
-                            'All',
-                            'Today',
-                            'Yesterday',
-                            'This week',
-                            'month',
-                          ]
-                              .map(
-                                (e) => DropdownMenuItem(
-                                  value: e,
-                                  child: Text(e),
-                                ),
-                              )
-                              .toList(),
-                          onChanged: (value) {
-                            setState(() {
-                              categoryId2 = value.toString();
-                            });
-                          },
-                        )
-                      ],
+                    child: DropdownButton<String>(isExpanded: true,
+                      underline: const Divider(
+                        color: Colors.transparent,
+                      ),
+                      value: categoryId2,
+                      items: <String>[
+                        'All',
+                        'Today',
+                        'Yesterday',
+                        'This week',
+                        'month',
+                      ]
+                          .map(
+                            (e) => DropdownMenuItem(
+                              value: e,
+                              child: Text(e),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (value) {
+                        setState(() {
+                          categoryId2 = value.toString();
+                        });
+                      },
                     ),
                   ),
                 ),
@@ -145,7 +140,7 @@ class _GraphsState extends State<Graphs> with TickerProviderStateMixin {
                     ),
                   ]),
               controller: tabController,
-              labelColor: Colors.green,
+              labelColor: Colors.black,
               unselectedLabelColor: Colors.black,
               tabs: const [
                 Tab(

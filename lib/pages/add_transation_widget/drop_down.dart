@@ -7,8 +7,8 @@ import 'package:moneypouch/models/category/category_model.dart';
 dynamic dropDownVale = '';
 
 class DropdownList extends StatefulWidget {
-  DropdownList({Key? key, required this.isIncome}) : super(key: key);
-  bool isIncome;
+  const DropdownList({Key? key, required this.isIncome}) : super(key: key);
+ final bool isIncome;
 
   @override
   State<DropdownList> createState() => _DropdownListState();
@@ -49,7 +49,7 @@ class _DropdownListState extends State<DropdownList> {
           }).toList(),
           // value: 'hj',
           onChanged: (newValue) {
-            log(newValue.toString());
+          
             setState(() {
               dropDownVale = newValue;
             });

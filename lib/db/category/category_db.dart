@@ -20,16 +20,12 @@ class CategoryDbFunction{
 
   
   Future<void> insertCategory(CategoryModel value) async{
-    // print(value);
+   
     
    final categoryDB= await Hive.openBox<CategoryModel>(categdbname);
-  //  bool a=value.id.isFinite;
-  //  print(value.id~/1000000);
-  //  print(a);
+  
    await categoryDB.put(value.id,value);
-  //  value.id=id;
-   
-  //  log(id.toString());
+  
     
    
 
@@ -46,8 +42,7 @@ class CategoryDbFunction{
     expenseListenable.value.clear();
     
    await Future.forEach(allCategories, (CategoryModel category) {
-    log(allCategories.toString());
-    log(category.type .toString());
+   
       if(category.type==CategoryType.income){
         incomeListenable.value.add(category);
       }else if(category.type==CategoryType.expense){
@@ -60,7 +55,7 @@ class CategoryDbFunction{
    }
    Future deleteCategory({required id}) async{
     final categoryDb= await Hive.openBox<CategoryModel>(categdbname);
-    log(id.toString());
+   
     await categoryDb.delete(id);
     refreshUI();
    }

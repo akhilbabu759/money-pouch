@@ -28,11 +28,7 @@ class _ViewAllTransationState extends State<ViewAllTransation>
     _tabController = TabController(vsync: this, length: 3);
     _tabController.addListener(() {
       setState(() {
-        results = _tabController.index == 0
-            ? TransationDbFunction().transationAll.value
-            : _tabController.index == 1
-                ? TransationDbFunction().incomeListenable.value
-                : TransationDbFunction().expenseListenable.value;
+       filter(dropDownVale);
       });
     });
   }
@@ -83,17 +79,17 @@ class _ViewAllTransationState extends State<ViewAllTransation>
   void _runFilter(String enteredKeyword) {
     if (enteredKeyword.isEmpty) {
       setState(() {
-        results = TransationDbFunction().transationAll.value;
+        
+        filter(dropDownVale);
       });
     } else {
       setState(() {
-        results = TransationDbFunction()
-            .transationAll
-            .value
+        results = results
             .where((user) => user.category
                 .toLowerCase()
                 .contains(enteredKeyword.toLowerCase()))
             .toList();
+        
       });
     }
 
@@ -187,10 +183,68 @@ class _ViewAllTransationState extends State<ViewAllTransation>
                           ),
                         );
                       }).toList(),
-                      onChanged: (newValue) {
+                      onChanged: (newValue){
                         if (newValue == 'month') {
                           _selectDate(context);
+                          
                         }
+                        filter(newValue);
+                       
+                      }),
+                ),
+                TabBar(
+                  controller: _tabController,
+                  indicator: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: const Color.fromARGB(255, 144, 237, 237),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Color.fromARGB(255, 158, 158, 158),
+                          blurRadius: 15,
+                          offset: Offset(5, 5),
+                        ),
+                        BoxShadow(
+                          color: Colors.white,
+                          blurRadius: 15,
+                          offset: Offset(-5, -5),
+                        ),
+                      ]),
+                  labelColor: Colors.black,
+                  unselectedLabelColor: Colors.black,
+                  tabs: const [
+                    Tab(
+                      text: 'Overview',
+                    ),
+                    Tab(
+                      text: 'Income',
+                    ),
+                    Tab(
+                      text: 'Expense',
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Expanded(
+                    child: TabBarView(controller: _tabController, children: [
+                  TransationListView(
+                    results: results,
+                  ),
+                  TransationListView(
+                    results: results,
+                  ),
+                  TransationListView(
+                    results: results,
+                  )
+                ])),
+              ],
+            ),
+          ),
+        ));
+  }
+  void filter(newValue){
+     
 
                         setState(() {
                           dropDownVale = newValue;
@@ -288,57 +342,5 @@ class _ViewAllTransationState extends State<ViewAllTransation>
                                 .toList();
                           });
                         }
-                      }),
-                ),
-                TabBar(
-                  controller: _tabController,
-                  indicator: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: const Color.fromARGB(255, 144, 237, 237),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Color.fromARGB(255, 158, 158, 158),
-                          blurRadius: 15,
-                          offset: Offset(5, 5),
-                        ),
-                        BoxShadow(
-                          color: Colors.white,
-                          blurRadius: 15,
-                          offset: Offset(-5, -5),
-                        ),
-                      ]),
-                  labelColor: Colors.green,
-                  unselectedLabelColor: Colors.black,
-                  tabs: const [
-                    Tab(
-                      text: 'Overview',
-                    ),
-                    Tab(
-                      text: 'Income',
-                    ),
-                    Tab(
-                      text: 'Expense',
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Expanded(
-                    child: TabBarView(controller: _tabController, children: [
-                  TransationListView(
-                    results: results,
-                  ),
-                  TransationListView(
-                    results: results,
-                  ),
-                  TransationListView(
-                    results: results,
-                  )
-                ])),
-              ],
-            ),
-          ),
-        ));
   }
 }

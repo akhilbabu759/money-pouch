@@ -5,11 +5,11 @@ import 'package:moneypouch/pages/home.dart';
 import 'package:moneypouch/pages/settings.dart';
 
 class BottomNavigation extends StatefulWidget {
-  BottomNavigation({
+   BottomNavigation({
     Key? key,
     required this.selectedIndex,
   }) : super(key: key);
-  int selectedIndex = 0;
+  int selectedIndex= 0;
 
   @override
   State<BottomNavigation> createState() => _MyWidgetState();
@@ -18,7 +18,7 @@ class BottomNavigation extends StatefulWidget {
 class _MyWidgetState extends State<BottomNavigation> {
   List bottomNavigChoices = [
     const Home(),
-    AddCatogery(isFromBottomNav: true),
+    const AddCatogery(isFromBottomNav: true),
     const Settings()
   ];
 

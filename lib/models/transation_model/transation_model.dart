@@ -1,5 +1,5 @@
 import 'package:hive_flutter/adapters.dart';
-import 'package:moneypouch/models/category/category_model.dart';
+
 part 'transation_model.g.dart';
 
 @HiveType(typeId:0)

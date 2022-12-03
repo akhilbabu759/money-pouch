@@ -23,8 +23,7 @@ class _DatePickState extends State<DatePick> {
     if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
-        log(picked.month.toString());
-        log(DateFormat.yMMMEd().format(DateTime.now()));
+      
         tx = Text(DateFormat.yMMMEd().format(picked));
       });
     }

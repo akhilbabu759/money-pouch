@@ -18,10 +18,10 @@ void callPageViewNotifi() {
 ValueNotifier<int> indexForGrid = ValueNotifier(0);
 
 class AddCatogery extends StatefulWidget {
-  AddCatogery({Key? key, required this.isFromBottomNav}) : super(key: key);
-  bool isFromBottomNav;
-  bool isIncome = true;
-  int selectedIndex = 1;
+  const AddCatogery({Key? key, required this.isFromBottomNav}) : super(key: key);
+ final bool isFromBottomNav;
+ final bool isIncome = true;
+ final int selectedIndex = 1;
 
   @override
   State<AddCatogery> createState() => _AddCatogeryState();
@@ -73,13 +73,13 @@ class _AddCatogeryState extends State<AddCatogery>
                     actions: [
                       OutlinedButton(
                           onPressed: () async {
-                            final catego;
+                            final CategoryModel catego;
 
-                            if (textcontrol.text.isEmpty) {
+                            if (textcontrol.text.trim().isEmpty) {
                               return;
                             } else {
                               catego = CategoryModel(
-                                  name: textcontrol.text,
+                                  name: textcontrol.text.trim(),
                                   type: _tabController.index == 0
                                       ? CategoryType.income
                                       : CategoryType.expense,

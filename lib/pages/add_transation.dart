@@ -32,7 +32,7 @@ class _AddTransationState extends State<AddTransation> {
           child: Column(
             children: [
               const SizedBox(
-                height: 60,
+                height: 25,
               ),
               SizedBox(
                 height: 65,
@@ -68,9 +68,9 @@ class _AddTransationState extends State<AddTransation> {
                   ],
                 ),
               ),
-              Expanded(
+              const Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 18.0, left: 1, right: 1),
+                  padding: EdgeInsets.only(top: 18.0, left: 1, right: 1),
                   child: TabBarView(children: [
                     FormTransation(isIncome: true),
                     FormTransation(isIncome: false)

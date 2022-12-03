@@ -6,8 +6,8 @@ import 'package:moneypouch/models/graph/chart.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class GraphTab extends StatefulWidget {
-  GraphTab({Key? key,required this.categoryId2}):super(key: key);
-  String  categoryId2;
+  const GraphTab({Key? key,required this.categoryId2}):super(key: key);
+ final String  categoryId2;
 
   @override
   State<GraphTab> createState() => _GraphTabState();

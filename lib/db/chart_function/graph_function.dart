@@ -72,6 +72,7 @@ filterFunction() async {
     } else if (element.isIncome == false) {
       expenseNotifier.value.add(element);
     }
+      
     overviewNotifier.value.add(element);
   }
 

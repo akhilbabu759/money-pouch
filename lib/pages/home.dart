@@ -1,4 +1,4 @@
-import 'dart:developer';
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -80,28 +80,34 @@ class _HomeState extends State<Home> {
                     height: 10,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 270),
-                    child: Text(
-                      'Good ${greeting()} ,',
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16,
-                          fontStyle: FontStyle.italic),
+                    padding: const EdgeInsets.only(left:10 ),
+                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Good ${greeting()} ,',
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16,
+                              fontStyle: FontStyle.italic),
+                        ),
+                      ],
                     ),
                   ),
                   const SizedBox(
-                    height: 3,
+                    height: 2,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                      right: 145.0,
+                    padding: const EdgeInsets.only(left:20.0),
+                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(' $name',
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 23,
+                                fontWeight: FontWeight.w400)),
+                      ],
                     ),
-                    child: Text(' $name',
-                        style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 23,
-                            fontWeight: FontWeight.w400)),
                   ),
                   const SizedBox(
                     height: 30,
