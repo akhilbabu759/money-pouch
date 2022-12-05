@@ -1,10 +1,10 @@
-import 'dart:developer';
+
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:moneypouch/models/transation_model/transation_model.dart';
 
-final transationDbName = 'transationDb';
+const transationDbName = 'transationDb';
 
 class TransationDbFunction {
   TransationDbFunction._internal();
