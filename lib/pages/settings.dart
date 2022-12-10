@@ -217,7 +217,7 @@ class _SettingsState extends State<Settings> {
           ),
         )),
       ),
-      bottomNavigationBar: BottomNavigation(selectedIndex: 2),
+      // bottomNavigationBar: BottomNavigation(selectedIndex: 2),
     );
   }
   Future<void> launchUr(Uri url) async {

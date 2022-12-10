@@ -162,8 +162,9 @@ class _AddCatogeryState extends State<AddCatogery>
             ))
           ]),
         )),
-        bottomNavigationBar: widget.isFromBottomNav == true
-            ? BottomNavigation(selectedIndex: 1)
-            : null);
+        // bottomNavigationBar: widget.isFromBottomNav == true
+        //     ? BottomNavigation(selectedIndex: 1)
+        //     : null
+            );
   }
 }

@@ -6,6 +6,8 @@ import 'package:moneypouch/pages/one_time/user_input.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'main_home.dart';
+
 class Splash extends StatefulWidget {
   const Splash({super.key});
 
@@ -16,7 +18,7 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   void goHom() {
     Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => const Home()));
+        .pushReplacement(MaterialPageRoute(builder: (context) =>  ScreenMAinPage()));
   }
 
   void goIntro() {
